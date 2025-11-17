@@ -4,12 +4,347 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>フル3:40目標｜Ver.5.2 心肺強化（LTフォーカス）版</title>
-  <!-- NOTE: Insert your full CSS + JS from the previous version here -->
   <style>
     body{background:#0b0c10;color:#e8eaed;font-family:Inter,system-ui;margin:0}
+    .wrap{max-width:1080px;margin:24px auto;padding:24px}
+    .card{background:#14171a;border-radius:16px;padding:20px;margin:16px 0;box-shadow:0 4px 20px rgba(0,0,0,.25)}
+    h1,h3,h4{margin-top:0}
+    .notes{color:#9aa0a6;font-size:0.9em}
+    ul{margin-left:20px}
+    /* weekly table */
+    table{width:100%;border-collapse:separate;border-spacing:0 8px}
+    th,td{padding:12px 14px;vertical-align:top;line-height:1.55}
+    thead th{background:#20232a;border-radius:12px 12px 0 0}
+    tbody tr{background:#171a1f}
+    tbody tr td:first-child{border-radius:12px 0 0 12px;white-space:nowrap;font-weight:700}
+    tbody tr td:last-child{border-radius:0 12px 12px 0}
+    .current-week{outline:2px solid #3ea6ff}
+    .hidden{display:none}
+    /* collapsible cards */
+    .card.collapsible h3{cursor:pointer;position:relative;padding-right:24px}
+    .card.collapsible h3::after{
+      content:'▼';
+      position:absolute;
+      right:0;
+      top:50%;
+      transform:translateY(-50%);
+      font-size:0.8em;
+      color:#9aa0a6;
+      transition:transform 0.2s;
+    }
+    .card.collapsible.collapsed h3::after{
+      transform:translateY(-50%) rotate(-90deg);
+    }
+    .card-body{margin-top:12px}
+    .card.collapsible.collapsed .card-body{display:none}
+    /* toggle button */
+    .week-toggle-wrap{
+      margin-bottom:12px;
+      display:flex;
+      justify-content:flex-end;
+    }
+    .week-toggle-btn{
+      background:#1f2933;
+      color:#e8eaed;
+      border:1px solid #3ea6ff;
+      border-radius:999px;
+      padding:6px 14px;
+      font-size:0.9em;
+      cursor:pointer;
+    }
+    .week-toggle-btn:hover{
+      background:#243447;
+    }
+    /* responsive: weekly table vertical cards on small screens */
+    @media (max-width: 640px){
+      .wrap{padding:16px;margin:16px auto}
+      table, thead, tbody, th, td, tr{display:block}
+      thead{display:none}
+      tbody tr{
+        margin-bottom:12px;
+        border-radius:12px;
+        overflow:hidden;
+      }
+      tbody tr td{
+        display:block;
+        border-radius:0 !important;
+        white-space:normal;
+      }
+      tbody tr td:first-child{
+        border-radius:12px 12px 0 0 !important;
+        border-bottom:1px solid #20232a;
+      }
+      tbody tr td:last-child{
+        border-radius:0 0 12px 12px !important;
+      }
+    }
   </style>
 </head>
 <body>
-<p>viewportを追加したバージョンです。ここに完全版HTMLを統合します。</p>
+<div class="wrap">
+  <h1>フル3:40目標（Ver.5.2 心肺強化版）</h1>
+  <p>開始：2025-11-17 / 本番：2026-02-08</p>
+
+  <div class="card collapsible collapsed">
+    <h3>ペース早見表</h3>
+    <div class="card-body">
+      <ul>
+        <li>E（イージー）：6:00–6:35 /km</li>
+        <li>M（マラソン）：5:13–5:18 /km（目標M ≒ 5:13 /km）</li>
+        <li>T（しきい値走）：4:33–4:36 /km（10〜12分×2〜3本）</li>
+        <li>I（インターバル）：4:24–4:28 /km（1km×3本 or 600〜800m×4〜5本）</li>
+      </ul>
+      <p class="notes">※今回の改訂では「T走（しきい値走）」のボリュームと頻度をやや増やし、心肺側（LT）の底上げを最優先にしています。</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>週間計画（W1〜W12）</h3>
+    <div class="week-toggle-wrap">
+      <button type="button" id="toggleWeeksBtn" class="week-toggle-btn">すべての週を表示</button>
+    </div>
+    <table id="weekTable">
+      <thead>
+        <tr>
+          <th>週</th>
+          <th>火</th>
+          <th>水</th>
+          <th>金</th>
+          <th>週末ロング</th>
+          <th>メモ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-week="1">
+          <td>W1 (11/17–11/23)<br><span class="notes">Recovery start</span></td>
+          <td>E 6〜7km</td>
+          <td>T 10分×3本（R=2分E）</td>
+          <td>I 1km×2〜3（軽め）</td>
+          <td>18〜20km LSD（6:15–6:35）</td>
+          <td class="notes">ハーフ明け。Tは「やや余裕あり」で心肺を起こすイメージ。</td>
+        </tr>
+        <tr data-week="2">
+          <td>W2 (11/24–11/30)<br><span class="notes">Base up</span></td>
+          <td>E 7〜8km＋流し×3</td>
+          <td>T 12分×2本（R=2分E）</td>
+          <td>I 800m×4（R=400mジョグ）</td>
+          <td>22〜24km LSD</td>
+          <td class="notes">T走の1本あたり時間を少し延長してLTに慣らす週。</td>
+        </tr>
+        <tr data-week="3">
+          <td>W3 (12/1–12/7)<br><span class="notes">First M-finish</span></td>
+          <td>E 7〜8km</td>
+          <td>T 10分×3本（R=2分E）</td>
+          <td>I 1km×3（R=400mジョグ）</td>
+          <td>25〜26km（後半5kmをM心拍帯）</td>
+          <td class="notes">後半5kmは「心拍145〜152 bpm」を目安にMペースで。</td>
+        </tr>
+        <tr data-week="4">
+          <td>W4 (12/8–12/14)<br><span class="notes">Solid long</span></td>
+          <td>E 7〜8km</td>
+          <td>T 12分×2本（R=2分E）</td>
+          <td>I 600m×5（R=300mジョグ）</td>
+          <td>28km（E一定）</td>
+          <td class="notes">ロングはフォームと補給の確認重視。心拍は抑えめでOK。</td>
+        </tr>
+        <tr data-week="5">
+          <td>W5 (12/15–12/21)<br><span class="notes">Key 30K #1</span></td>
+          <td>E 7〜8km</td>
+          <td>T 10分×3本（R=2分E）</td>
+          <td>I 800m×4（R=400mジョグ）</td>
+          <td>30km（後半10kmをM心拍帯）</td>
+          <td class="notes">後半10kmは「心拍145〜152 bpmをキープするM走」。止まらず押せるかがポイント。</td>
+        </tr>
+        <tr data-week="6">
+          <td>W6 (12/22–12/28)<br><span class="notes">Cutback</span></td>
+          <td>E 6km</td>
+          <td>T 8分×2本（軽め）</td>
+          <td>休養 or E 5km</td>
+          <td>22km E</td>
+          <td class="notes">疲労抜き優先。LT刺激は軽く入れる程度。</td>
+        </tr>
+        <tr data-week="7">
+          <td>W7 (12/29–1/4)<br><span class="notes">Key 32K</span></td>
+          <td>E 7km＋流し×3</td>
+          <td>T 12分×2本（R=2分E） or M 8km（心拍145〜152）</td>
+          <td>I 600m×5</td>
+          <td>30〜32km（6:15→最後は心拍150前後までビルド）</td>
+          <td class="notes">終盤にかけて心拍150前後まで自然に上げていくプログレッション。</td>
+        </tr>
+        <tr data-week="8">
+          <td>W8 (1/5–1/11)<br><span class="notes">M-block</span></td>
+          <td>E 7〜8km</td>
+          <td>M 8〜10km（心拍145〜152管理）</td>
+          <td>I 1km×3</td>
+          <td>28km（中盤12kmをM心拍帯）</td>
+          <td class="notes">「心拍145〜152でどれだけ楽にMを刻めるか」を確認する週。</td>
+        </tr>
+        <tr data-week="9">
+          <td>W9 (1/12–1/18)<br><span class="notes">Stability</span></td>
+          <td>E 7〜8km＋流し×3</td>
+          <td>T 10分×2本</td>
+          <td>I 600m×5</td>
+          <td>24〜26km E＋流し×4</td>
+          <td class="notes">量を抑えつつT&Iでキレを維持。疲労感をチェック。</td>
+        </tr>
+        <tr data-week="10">
+          <td>W10 (1/19–1/25)<br><span class="notes">Taper 2</span></td>
+          <td>E 6〜7km＋流し×4</td>
+          <td>T 10分×2本（軽め）</td>
+          <td>E 6km</td>
+          <td>24km E（最後にM 5km：心拍145〜150）</td>
+          <td class="notes">全体量を20〜25%減。M部分は「余裕を感じられるか」が指標。</td>
+        </tr>
+        <tr data-week="11">
+          <td>W11 (1/26–2/1)<br><span class="notes">Taper 1</span></td>
+          <td>E 6km＋流し×3</td>
+          <td>M 6〜8km（心拍145〜150）</td>
+          <td>E 5km</td>
+          <td>18〜20km E（最後にM 6km）</td>
+          <td class="notes">心肺を軽く刺激しつつ、疲労を抜いていく週。</td>
+        </tr>
+        <tr data-week="12">
+          <td>W12 (2/2–2/8)<br><span class="notes">Race week</span></td>
+          <td>E 5km＋流し×3</td>
+          <td>休養 or 15分ジョグ</td>
+          <td>E 4〜5km</td>
+          <td>本番フル 42.195km</td>
+          <td class="notes">睡眠・補給・装備の最終確認。走りたくても我慢してフレッシュに当日へ。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card collapsible collapsed">
+    <h3>足攣り・メンタル対策（運用ルール）</h3>
+    <div class="card-body">
+      <ul>
+        <li>ロング走は30〜40分毎に「水＋電解質（塩ジェル or OS-1）」を必ず補給。</li>
+        <li>週2回：カーフレイズ片足20回×2〜3set、プランク30〜45秒×3。</li>
+        <li>走行中に違和感が出たら「歩き1分＋軽ストレッチ」でリセットしてから再スタート。</li>
+        <li>ロングは段階的に「後半M心拍帯」へ移行し、失速しない脚と心肺をセットで鍛える。</li>
+        <li>練習ログに「良かった点×3」を必ず記録し、自己評価をポジティブに維持する。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card collapsible collapsed">
+    <h3>「流し（Strides）」とは？</h3>
+    <div class="card-body">
+      <ul>
+        <li>100m前後を「8割のスピード」で気持ちよく走る短い刺激。</li>
+        <li>全力疾走ではなく、フォームとリズムを整えるのが目的。</li>
+        <li>例：ゆっくり加速 → 50mくらいフォーム良く維持 → 徐々に減速。</li>
+        <li>疲労を残さず、スピード持久力・接地感覚・ケイデンスを改善。</li>
+        <li>1本20〜25秒程度で、3〜5本が基本。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card collapsible collapsed">
+    <h3>当日の補給計画（さいたまマラソン版）</h3>
+    <div class="card-body">
+      <table>
+        <tr><th>距離</th><th>内容</th></tr>
+        <tr><td>5km</td><td>水少量で喉を湿らす</td></tr>
+        <tr><td>10km</td><td>エネルギージェル①（100kcal）＋スポドリ</td></tr>
+        <tr><td>15km</td><td>塩ジェル①＋水</td></tr>
+        <tr><td>20km</td><td>エネルギージェル②＋スポドリ</td></tr>
+        <tr><td>25km</td><td>塩ジェル②＋水</td></tr>
+        <tr><td>28〜29km</td><td>OS-1粉末①（少量舌に→スポドリで流す）</td></tr>
+        <tr><td>30km</td><td>エネルギージェル③（100kcal）＋水</td></tr>
+        <tr><td>33km</td><td>OS-1粉末②＋スポドリ＋コーラ一口</td></tr>
+        <tr><td>35km</td><td>エネルギージェル④（150kcal高糖タイプ）</td></tr>
+        <tr><td>38km</td><td>スポドリ（落ち着いて補給）</td></tr>
+      </table>
+      <p class="notes">※OS-1は少量を舌に乗せて水またはスポドリで流す方式。粉末の量は事前のロング走で必ずテストしておく。</p>
+    </div>
+  </div>
+
+  <div class="card collapsible collapsed">
+    <h3>ウォームアップガイド（T走・I走）</h3>
+    <div class="card-body">
+      <h4>T走のウォームアップ（目安10〜12分）</h4>
+      <ul>
+        <li>2〜3分：非常にゆっくりジョグ（Eよりさらに遅く）</li>
+        <li>5〜6分：Eペース付近（6:00〜6:20/km）まで自然に上げる</li>
+        <li>20〜25秒の「流し」×2〜3本（8割のスピード、全力ではない）</li>
+        <li>1分：軽いジョグで呼吸を整える → そのままT走へ</li>
+      </ul>
+      <h4>I走のウォームアップ（目安12〜15分）</h4>
+      <ul>
+        <li>3〜4分：ゆっくりジョグ（7:00/km前後）</li>
+        <li>5〜6分：Eペース付近（6:00〜6:20/km）</li>
+        <li>20〜25秒の「流し」×3〜4本（8〜8.5割のスピード）</li>
+        <li>1〜2分：軽いジョグで呼吸を整える → そのままI走へ</li>
+      </ul>
+      <p class="notes">※時間がない日は「T走7分／I走8〜9分」の短縮版でもOK。必ず少しは温めてからポイント練習に入る。</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  // --- current week detection ---
+  var startDate = new Date('2025-11-17T00:00:00');
+  var today = new Date();
+  var diffMs = today.getTime() - startDate.getTime();
+  var diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  var weekIndex = Math.floor(diffDays / 7);
+  var currentWeek = weekIndex + 1;
+  if (currentWeek < 1) currentWeek = 1;
+  var weekRows = document.querySelectorAll('#weekTable tbody tr');
+  var totalWeeks = weekRows.length;
+  if (currentWeek > totalWeeks) currentWeek = totalWeeks;
+
+  var showingAll = false;
+
+  function applyWeekFilter(){
+    weekRows.forEach(function(row){
+      var w = parseInt(row.getAttribute('data-week'), 10);
+      if (!showingAll && w !== currentWeek){
+        row.classList.add('hidden');
+        row.classList.remove('current-week');
+      } else {
+        row.classList.remove('hidden');
+        if (w === currentWeek){
+          row.classList.add('current-week');
+        } else {
+          row.classList.remove('current-week');
+        }
+      }
+    });
+    var btn = document.getElementById('toggleWeeksBtn');
+    if (!btn) return;
+    if (showingAll){
+      btn.textContent = '現在の週だけ表示';
+    } else {
+      btn.textContent = 'すべての週を表示';
+    }
+  }
+
+  applyWeekFilter();
+
+  var btn = document.getElementById('toggleWeeksBtn');
+  if (btn){
+    btn.addEventListener('click', function(){
+      showingAll = !showingAll;
+      applyWeekFilter();
+    });
+  }
+
+  // --- collapsible cards ---
+  var cards = document.querySelectorAll('.card.collapsible');
+  cards.forEach(function(card){
+    var header = card.querySelector('h3');
+    if (!header) return;
+    header.addEventListener('click', function(){
+      card.classList.toggle('collapsed');
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
