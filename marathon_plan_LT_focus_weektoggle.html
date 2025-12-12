@@ -142,7 +142,7 @@
           <td>W4 (12/8–12/14)<br><span class="notes">Solid long</span></td>
           <td>E 7〜8km</td>
           <td>T 12分×2本（R=2分E）</td>
-          <td>I 600m×5（R=300mジョグ）</td>
+          <td>I 600m×5（軽負荷・フォーム重視）（軽負荷・フォーム重視）（R=300mジョグ）</td>
           <td>28km（E一定）</td>
           <td class="notes">ロングはフォームと補給の確認重視。心拍は抑えめでOK。</td>
         </tr>
@@ -151,8 +151,8 @@
           <td>E 7〜8km</td>
           <td>T 10分×3本（R=2分E）</td>
           <td>I 800m×4（R=400mジョグ）</td>
-          <td>30km（後半10kmをM心拍帯）</td>
-          <td class="notes">後半10kmは「心拍145〜152 bpmをキープするM走」。止まらず押せるかがポイント。</td>
+          <td>30km（後半6kmをM心拍帯）</td>
+          <td class="notes">後半6kmは「心拍145〜152 bpmをキープするM走」。ここは階段的にM距離を増やす1回目。</td>
         </tr>
         <tr data-week="6">
           <td>W6 (12/22–12/28)<br><span class="notes">Cutback</span></td>
@@ -175,13 +175,13 @@
           <td>E 7〜8km</td>
           <td>M 8〜10km（心拍145〜152管理）</td>
           <td>I 1km×3</td>
-          <td>28km（中盤12kmをM心拍帯）</td>
+          <td>28km（中盤8kmをM心拍帯）</td>
           <td class="notes">「心拍145〜152でどれだけ楽にMを刻めるか」を確認する週。</td>
         </tr>
         <tr data-week="9">
           <td>W9 (1/12–1/18)<br><span class="notes">Stability</span></td>
           <td>E 7〜8km＋流し×3</td>
-          <td>T 10分×2本</td>
+          <td>T 12分＋8分（R=2分E）</td>
           <td>I 600m×5</td>
           <td>24〜26km E＋流し×4</td>
           <td class="notes">量を抑えつつT&Iでキレを維持。疲労感をチェック。</td>
@@ -299,6 +299,13 @@
 
   var showingAll = false;
 
+  function scrollToCurrentWeek(){
+    var row = document.querySelector('#weekTable tbody tr.current-week');
+    if (!row) return;
+    row.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+
   function applyWeekFilter(){
     weekRows.forEach(function(row){
       var w = parseInt(row.getAttribute('data-week'), 10);
@@ -330,6 +337,7 @@
     btn.addEventListener('click', function(){
       showingAll = !showingAll;
       applyWeekFilter();
+      if (showingAll){ scrollToCurrentWeek(); }
     });
   }
 
