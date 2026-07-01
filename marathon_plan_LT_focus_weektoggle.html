@@ -144,6 +144,307 @@
     .laneText b{display:block; font-size:.94rem}
     .laneText span{display:block; color:var(--muted); font-size:.84rem}
     .foot{color:var(--muted); font-size:.84rem; text-align:center; margin-top:16px}
+
+    /* --- Motivation widgets v6: scenery overlay + in-place runner with one-way elbow/knee bends --- */
+    .journeyTop{margin-top:12px; padding:12px; position:relative; overflow:hidden}
+    .journeyBox{border-color:#c7d2fe; background:linear-gradient(180deg,#f8fbff,#f0f9ff)}
+    .scene{
+      position:relative;
+      height:168px;
+      overflow:hidden;
+      border-radius:20px;
+      border:1px solid #dbeafe;
+      background:linear-gradient(180deg,#bfdbfe 0%,#e0f2fe 56%,#dcfce7 57%,#bbf7d0 100%);
+      transition:background .45s ease;
+      isolation:isolate;
+      box-shadow:inset 0 -20px 35px rgba(15,23,42,.06);
+    }
+    .scene.stage-0{background:linear-gradient(180deg,#c7d2fe 0%,#e0f2fe 56%,#e2e8f0 57%,#cbd5e1 100%)}
+    .scene.stage-1{background:linear-gradient(180deg,#bae6fd 0%,#e0f2fe 58%,#dcfce7 59%,#86efac 100%)}
+    .scene.stage-2{background:linear-gradient(180deg,#bbf7d0 0%,#dcfce7 58%,#bbf7d0 59%,#4ade80 100%)}
+    .scene.stage-3{background:linear-gradient(180deg,#bfdbfe 0%,#e0f2fe 58%,#d9f99d 59%,#86efac 100%)}
+    .scene.stage-4,.scene.stage-5{background:linear-gradient(180deg,#bae6fd 0%,#e0f2fe 54%,#7dd3fc 55%,#38bdf8 100%)}
+    .scene .sun{
+      position:absolute; right:22px; top:16px;
+      width:34px; height:34px;
+      border-radius:50%;
+      background:#fde68a;
+      box-shadow:0 0 28px rgba(253,230,138,.75);
+    }
+    .cloud{position:absolute; top:20px; left:18px; width:52px; height:18px; border-radius:999px; background:rgba(255,255,255,.82); opacity:.9}
+    .cloud::before,.cloud::after{content:""; position:absolute; bottom:5px; border-radius:50%; background:inherit}
+    .cloud::before{left:8px; width:20px; height:20px}
+    .cloud::after{left:25px; width:24px; height:24px}
+    .cloud.two{left:auto; right:78px; top:38px; transform:scale(.75); opacity:.72}
+    .scene-layer{position:absolute; inset:0; opacity:0; transition:opacity .45s ease, transform .45s ease; transform:translateY(6px)}
+    .stage-0 .city,.stage-1 .park,.stage-2 .forest,.stage-3 .mountain,.stage-4 .lake,.stage-5 .lake{opacity:1; transform:translateY(0)}
+    .building{position:absolute; bottom:34px; width:24px; background:#475569; border-radius:3px 3px 0 0; box-shadow:inset 0 0 0 999px rgba(255,255,255,.02)}
+    .building::before{content:""; position:absolute; inset:7px 5px; background:repeating-linear-gradient(180deg,#fef3c7 0 4px, transparent 4px 9px)}
+    .b1{left:16px;height:48px}.b2{left:48px;height:64px}.b3{left:86px;height:42px}.b4{right:116px;height:54px}.b5{right:88px;height:38px}
+    .road{position:absolute; left:0; right:0; bottom:0; height:34px; background:#64748b}
+    .road::before{content:""; position:absolute; left:0; right:0; top:14px; height:3px; background:repeating-linear-gradient(90deg,#f8fafc 0 22px, transparent 22px 42px)}
+    .tree{position:absolute; bottom:28px; width:16px; height:38px; background:#7c4a1e; border-radius:999px}
+    .tree::before{content:""; position:absolute; left:-18px; top:-28px; width:52px; height:52px; border-radius:50%; background:#16a34a; box-shadow:12px 14px 0 #22c55e, -10px 16px 0 #15803d}
+    .t1{left:24px}.t2{left:78px; transform:scale(.85)}.t3{left:135px}.t4{right:120px; transform:scale(.9)}.t5{right:78px}
+    .trail{position:absolute; left:-12px; right:-12px; bottom:12px; height:22px; border-radius:999px 999px 0 0; background:#facc15; transform:rotate(-2deg); opacity:.85}
+    .mount{position:absolute; bottom:29px; width:0; height:0; border-left:72px solid transparent; border-right:72px solid transparent; border-bottom:84px solid #64748b; filter:drop-shadow(0 8px 4px rgba(15,23,42,.12))}
+    .mount::before{content:""; position:absolute; left:-22px; top:18px; width:0; height:0; border-left:22px solid transparent; border-right:22px solid transparent; border-bottom:26px solid #f8fafc}
+    .m1{left:20px}.m2{right:78px; transform:scale(.78); bottom:31px; border-bottom-color:#94a3b8}
+    .ridge{position:absolute; left:0; right:0; bottom:0; height:36px; background:#22c55e; border-radius:55% 45% 0 0 / 100% 100% 0 0}
+    .water{position:absolute; left:0; right:0; bottom:0; height:52px; background:repeating-linear-gradient(180deg,#38bdf8 0 7px,#7dd3fc 7px 14px)}
+    .shore{position:absolute; left:0; right:0; bottom:48px; height:18px; background:#facc15; border-radius:50% 50% 0 0 / 100% 100% 0 0}
+    .reed{position:absolute; bottom:43px; width:5px; height:28px; background:#166534; border-radius:999px; transform-origin:bottom}
+    .r1{left:22px; transform:rotate(-12deg)}.r2{left:31px; transform:rotate(8deg)}.r3{right:114px; transform:rotate(-8deg)}.r4{right:104px; transform:rotate(10deg)}
+    .flag{position:absolute; right:94px; bottom:48px; width:4px; height:48px; background:#1e293b; opacity:0; transition:opacity .3s ease}
+    .flag::after{content:""; position:absolute; left:4px; top:0; width:34px; height:22px; background:#f43f5e; clip-path:polygon(0 0,100% 24%,0 50%)}
+    .stage-5 .flag{opacity:1; animation:flagWave 1s ease-in-out infinite alternate}
+    @keyframes flagWave{0%{transform:skewY(-2deg)}100%{transform:skewY(4deg)}}
+    .sceneLabel{
+      position:absolute;
+      left:12px;
+      bottom:62px;
+      border-radius:999px;
+      padding:4px 8px;
+      background:rgba(255,255,255,.74);
+      color:#0f172a;
+      font-size:.70rem;
+      font-weight:950;
+      backdrop-filter:blur(5px);
+      box-shadow:0 6px 14px rgba(15,23,42,.10);
+      z-index:9;
+      max-width:calc(100% - 128px);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .sceneOverlay{
+      position:absolute;
+      left:10px;
+      bottom:10px;
+      top:auto;
+      max-width:calc(100% - 126px);
+      min-width:0;
+      border-radius:16px;
+      padding:8px 10px;
+      background:rgba(255,255,255,.78);
+      backdrop-filter:blur(8px);
+      box-shadow:0 10px 24px rgba(15,23,42,.12);
+      z-index:9;
+      overflow:hidden;
+    }
+    .journeyText{font-size:.88rem; font-weight:950; color:#0f172a; line-height:1.15; white-space:nowrap}
+    .journeyMsg{
+      margin-top:4px;
+      color:#475569;
+      font-size:.76rem;
+      font-weight:850;
+      line-height:1.25;
+      white-space:nowrap;
+      overflow:hidden;
+      width:100%;
+    }
+    .journeyMsg span{display:inline-block; min-width:100%; padding-right:28px; animation:none}
+    .sceneRunner{
+      position:absolute;
+      right:10px;
+      bottom:5px;
+      width:104px;
+      height:116px;
+      z-index:10;
+      pointer-events:none;
+      overflow:visible;
+    }
+    .runner-caption{
+      display:none;
+    }
+    .speed-wind{
+      position:absolute;
+      right:58px;
+      bottom:41px;
+      width:42px;
+      height:25px;
+      opacity:.34;
+    }
+    .speed-wind::before,
+    .speed-wind::after,
+    .speed-wind span{
+      content:"";
+      position:absolute;
+      left:0;
+      height:2px;
+      border-radius:999px;
+      background:rgba(15,23,42,.50);
+      animation:windPulse 1.1s ease-in-out infinite;
+    }
+    .speed-wind::before{top:3px;width:38px}
+    .speed-wind span{top:11px;width:30px;animation-delay:.16s}
+    .speed-wind::after{top:19px;width:21px;animation-delay:.32s}
+    .runner-sparkle{
+      position:absolute;
+      right:74px;
+      bottom:86px;
+      color:#f59e0b;
+      font-size:20px;
+      opacity:0;
+      transform:scale(.8);
+      z-index:13;
+    }
+    .runner-sparkle.show{opacity:1; animation:sparklePulse 1.15s ease-in-out infinite}
+
+    .css-runner{
+      --stride:1.42s;
+      --armForward:34deg;
+      --armBack:-26deg;
+      --legForward:30deg;
+      --legBack:-27deg;
+      --elbowA:24deg;
+      --elbowB:58deg;
+      --kneeA:-16deg;
+      --kneeB:-54deg;
+      position:absolute;
+      right:2px;
+      bottom:8px;
+      width:82px;
+      height:90px;
+      transform-origin:50% 86%;
+      animation:runnerBob calc(var(--stride) / 2) ease-in-out infinite;
+      filter:drop-shadow(0 7px 6px rgba(15,23,42,.22));
+    }
+    .css-runner.rest{--stride:2.25s; --armForward:16deg; --armBack:-12deg; --legForward:12deg; --legBack:-10deg; --elbowA:18deg; --elbowB:30deg; --kneeA:-10deg; --kneeB:-24deg; animation-name:runnerWarmup}
+    .css-runner.walk{--stride:1.72s; --armForward:24deg; --armBack:-18deg; --legForward:20deg; --legBack:-18deg; --elbowA:20deg; --elbowB:40deg; --kneeA:-12deg; --kneeB:-34deg}
+    .css-runner.jog{--stride:1.24s; --armForward:34deg; --armBack:-26deg; --legForward:30deg; --legBack:-27deg; --elbowA:24deg; --elbowB:58deg; --kneeA:-16deg; --kneeB:-54deg}
+    .css-runner.fast{--stride:.80s; --armForward:42deg; --armBack:-34deg; --legForward:38deg; --legBack:-34deg; --elbowA:28deg; --elbowB:66deg; --kneeA:-20deg; --kneeB:-64deg}
+    .css-runner .head{
+      position:absolute;
+      left:26px; top:1px;
+      width:18px; height:18px;
+      border-radius:50%;
+      background:#ffe0bd;
+      border:2px solid rgba(255,255,255,.85);
+      z-index:5;
+    }
+    .css-runner .head::after{
+      content:"";
+      position:absolute;
+      left:2px; top:7px;
+      width:3px; height:3px;
+      border-radius:50%;
+      background:#0f172a;
+      opacity:.55;
+    }
+    .css-runner .cap{
+      position:absolute;
+      left:22px; top:-1px;
+      width:22px; height:8px;
+      border-radius:999px 999px 5px 5px;
+      background:#fde68a;
+      transform:rotate(-8deg);
+      z-index:6;
+    }
+    .css-runner .cap::before{
+      content:"";
+      position:absolute;
+      left:-8px; top:4px;
+      width:12px; height:4px;
+      border-radius:999px;
+      background:#fde68a;
+    }
+    .css-runner .body{
+      position:absolute;
+      left:36px; top:21px;
+      width:12px; height:27px;
+      border-radius:999px;
+      background:linear-gradient(180deg,#60a5fa,#2563eb);
+      transform:rotate(8deg);
+      transform-origin:50% 8%;
+      z-index:4;
+    }
+    .css-runner .arm,
+    .css-runner .leg{
+      position:absolute;
+      transform-origin:50% 0%;
+      z-index:3;
+    }
+    .css-runner .arm{top:27px; width:6px; height:33px}
+    .css-runner .leg{top:47px; width:7px; height:42px}
+    .css-runner .arm-left{left:36px; animation:armFrontSwing var(--stride) ease-in-out infinite alternate; z-index:5}
+    .css-runner .arm-right{left:45px; animation:armRearSwing var(--stride) ease-in-out infinite alternate; z-index:2}
+    .css-runner .leg-left{left:36px; animation:legFrontSwing var(--stride) ease-in-out infinite alternate; z-index:5}
+    .css-runner .leg-right{left:45px; animation:legRearSwing var(--stride) ease-in-out infinite alternate; z-index:2}
+    .css-runner .upper,
+    .css-runner .lower{
+      position:absolute;
+      left:0;
+      width:100%;
+      border-radius:999px;
+      transform-origin:50% 0%;
+    }
+    .css-runner .joint{
+      position:absolute;
+      left:50%;
+      width:8px;
+      height:8px;
+      margin-left:-4px;
+      border-radius:50%;
+      z-index:8;
+    }
+    .css-runner .arm .upper{top:0; height:16px; background:#bfdbfe}
+    .css-runner .arm .lower{top:15px; height:18px; background:#93c5fd; animation:elbowFrontBend var(--stride) ease-in-out infinite alternate}
+    .css-runner .arm .joint{top:13px; background:#dbeafe}
+    .css-runner .arm-right .lower{animation-name:elbowRearBend}
+    .css-runner .hand{position:absolute; left:-1px; bottom:-3px; width:8px; height:8px; border-radius:50%; background:#ffe0bd}
+    .css-runner .leg .upper{top:0; height:20px; background:#1d4ed8}
+    .css-runner .leg .lower{top:19px; height:23px; background:#2563eb; animation:kneeFrontBend var(--stride) ease-in-out infinite alternate}
+    .css-runner .leg .joint{top:17px; background:#1e40af}
+    .css-runner .leg-right .lower{animation-name:kneeRearBend}
+    .css-runner .shoe{position:absolute; left:-5px; bottom:-5px; width:16px; height:5px; border-radius:999px; background:#111827; transform-origin:70% 50%}
+    .css-runner .groundShadow{position:absolute; left:18px; bottom:-1px; width:54px; height:8px; border-radius:50%; background:rgba(15,23,42,.18); filter:blur(1px); z-index:0}
+
+    @keyframes runnerBob{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-4px) rotate(2deg)}}
+    @keyframes runnerWarmup{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-2px) rotate(4deg)}}
+    @keyframes armFrontSwing{0%{transform:rotate(var(--armForward))}100%{transform:rotate(var(--armBack))}}
+    @keyframes armRearSwing{0%{transform:rotate(var(--armBack))}100%{transform:rotate(var(--armForward))}}
+    @keyframes legFrontSwing{0%{transform:rotate(var(--legForward))}100%{transform:rotate(var(--legBack))}}
+    @keyframes legRearSwing{0%{transform:rotate(var(--legBack))}100%{transform:rotate(var(--legForward))}}
+    @keyframes elbowFrontBend{0%{transform:rotate(var(--elbowB))}100%{transform:rotate(var(--elbowA))}}
+    @keyframes elbowRearBend{0%{transform:rotate(var(--elbowA))}100%{transform:rotate(var(--elbowB))}}
+    @keyframes kneeFrontBend{0%{transform:rotate(var(--kneeA))}100%{transform:rotate(var(--kneeB))}}
+    @keyframes kneeRearBend{0%{transform:rotate(var(--kneeB))}100%{transform:rotate(var(--kneeA))}}
+    @keyframes windPulse{0%,100%{transform:translateX(0); opacity:.32}50%{transform:translateX(-8px); opacity:1}}
+    @keyframes sparklePulse{0%,100%{transform:scale(.75) rotate(0deg);opacity:.45}50%{transform:scale(1.18) rotate(18deg);opacity:1}}
+    @keyframes marqueeText{0%,18%{transform:translateX(0)}82%,100%{transform:translateX(-45%)} }
+
+
+    .medalRow{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+    .medal{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:34px;height:30px;
+      padding:0 8px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid #e2e8f0;
+      filter:grayscale(1);
+      opacity:.45;
+      transition:all .25s ease;
+      font-size:.86rem;
+      font-weight:900;
+      color:#475569;
+      gap:4px;
+    }
+    .medal.active{filter:none;opacity:1;background:#fff7ed;border-color:#fed7aa;box-shadow:0 8px 18px rgba(245,158,11,.16)}
+    @media (max-width:640px){
+      .scene{height:158px}
+      .sceneOverlay{left:8px; bottom:8px; max-width:calc(100% - 96px); padding:7px 8px}
+      .journeyText{font-size:.80rem}
+      .journeyMsg{font-size:.70rem}
+      .journeyMsg.scroll span{animation:marqueeText 13s linear infinite}
+      .sceneRunner{right:2px; bottom:3px; transform:scale(.74); transform-origin:right bottom}
+      .sceneLabel{left:8px; bottom:54px; right:auto; max-width:calc(100% - 98px); font-size:.66rem; padding:4px 7px}
+      .medal span{display:none}
+    }
+
     @media (min-width:800px){
       .wrap{width:min(1120px,100% - 42px); padding-top:24px}
       .hero{padding:28px 28px 24px}
@@ -169,7 +470,62 @@
         <span class="chip">💧 90分超は補給練習</span>
         <span class="chip">🚫 取り返し禁止</span>
       </div>
+
+
     </header>
+
+    <section class="progressBox journeyBox journeyTop" aria-label="積み上げ風景と今週の調子">
+      <div class="scene stage-0" id="journeyScene" aria-label="累積の積み上げで変わる風景">
+        <span class="sun"></span>
+        <span class="cloud"></span>
+        <span class="cloud two"></span>
+        <div class="scene-layer city" aria-hidden="true">
+          <span class="building b1"></span><span class="building b2"></span><span class="building b3"></span><span class="building b4"></span><span class="building b5"></span>
+          <span class="road"></span>
+        </div>
+        <div class="scene-layer park" aria-hidden="true">
+          <span class="tree t1"></span><span class="tree t2"></span><span class="tree t3"></span><span class="trail"></span>
+        </div>
+        <div class="scene-layer forest" aria-hidden="true">
+          <span class="tree t1"></span><span class="tree t2"></span><span class="tree t3"></span><span class="tree t4"></span><span class="tree t5"></span><span class="trail"></span>
+        </div>
+        <div class="scene-layer mountain" aria-hidden="true">
+          <span class="mount m1"></span><span class="mount m2"></span><span class="ridge"></span>
+        </div>
+        <div class="scene-layer lake" aria-hidden="true">
+          <span class="shore"></span><span class="water"></span><span class="reed r1"></span><span class="reed r2"></span><span class="reed r3"></span><span class="reed r4"></span>
+          <span class="flag"></span>
+        </div>
+        <div class="sceneOverlay">
+          <div class="journeyText" id="journeyText">積み上げ 0歩</div>
+          <div class="journeyMsg"><span id="journeyMsg">チェックを入れるほど風景が変わります。スキップしても風景は戻りません。</span></div>
+        </div>
+        <span class="sceneLabel" id="sceneLabel">朝の街</span>
+        <div class="sceneRunner" aria-label="今週の調子">
+          <div class="runner-caption" id="runnerMood">今週の調子：ウォームアップ中</div>
+          <span class="speed-wind" aria-hidden="true"><span></span></span>
+          <span class="runner-sparkle" id="runnerSpark">✦</span>
+          <div class="css-runner rest" id="runnerFigure" aria-hidden="true">
+            <span class="groundShadow"></span>
+            <span class="cap"></span>
+            <span class="head"></span>
+            <span class="body"></span>
+            <span class="arm arm-left"><span class="upper"></span><span class="joint"></span><span class="lower"><span class="hand"></span></span></span>
+            <span class="arm arm-right"><span class="upper"></span><span class="joint"></span><span class="lower"><span class="hand"></span></span></span>
+            <span class="leg leg-left"><span class="upper"></span><span class="joint"></span><span class="lower"><span class="shoe"></span></span></span>
+            <span class="leg leg-right"><span class="upper"></span><span class="joint"></span><span class="lower"><span class="shoe"></span></span></span>
+          </div>
+        </div>
+      </div>
+      <div class="medalRow" aria-label="積み上げマーカー">
+        <span class="medal" data-step="3" title="最初の一歩">🌱<span>芽</span></span>
+        <span class="medal" data-step="9" title="リズム継続">👟<span>リズム</span></span>
+        <span class="medal" data-step="15" title="ロング定着">🏅<span>定着</span></span>
+        <span class="medal" data-step="21" title="夏の土台">🌊<span>湖畔</span></span>
+        <span class="medal" data-step="27" title="W8到着">🏁<span>到着</span></span>
+      </div>
+    </section>
+
 
     <nav class="quicknav" aria-label="クイックナビ">
       <div class="quicknav-row">
@@ -193,10 +549,6 @@
         </div>
         <h2 class="section-title">今週のミッション</h2>
         <div class="mission" id="currentMissions"></div>
-        <div class="progressBox">
-          <div class="progressTop"><span>この計画のチェック達成率</span><span id="progressText">0%</span></div>
-          <div class="bar"><span id="progressBar"></span></div>
-        </div>
         <div class="togglebar">
           <button class="primary" type="button" id="jumpWeeks">W0–W8を見る</button>
           <button type="button" id="openAll">全部開く</button>
@@ -277,7 +629,7 @@
         </div>
       </details>
     </section>
-    <div class="foot">添付HTMLのスマホ向け週トグル構成をベースに、W0–W8版として再設計。チェック状態はブラウザのlocalStorageに保存されます。</div>
+    <div class="foot">添付HTMLのスマホ向け週トグル構成をベースに、W0–W8版として再設計。チェック状態と風景進行はブラウザのlocalStorageに保存されます。</div>
   </div>
 
   <script>
@@ -460,18 +812,109 @@
       });
     }
 
+    function getMissionChecked(wi, mi){
+      const key = checkKey(wi, mi);
+      const stored = localStorage.getItem(key);
+      return stored === null ? !!weeks[wi].missions[mi].done : stored === '1';
+    }
+
+    function missionWeight(item){
+      return item.key ? 2 : 1;
+    }
+
+    function getWeekScore(wi){
+      return weeks[wi].missions.reduce((sum, item, mi) => {
+        return sum + (getMissionChecked(wi, mi) ? missionWeight(item) : 0);
+      }, 0);
+    }
+
+    function getAllScore(){
+      return weeks.reduce((sum, week, wi) => {
+        return sum + week.missions.reduce((subtotal, item, mi) => {
+          return subtotal + (getMissionChecked(wi, mi) ? missionWeight(item) : 0);
+        }, 0);
+      }, 0);
+    }
+
+    function updateRunnerMood(){
+      const score = getWeekScore(currentIndex);
+      const longDone = weeks[currentIndex].missions.some((item, mi) => item.key && getMissionChecked(currentIndex, mi));
+      const runner = document.getElementById('runnerFigure');
+      const mood = document.getElementById('runnerMood');
+      const spark = document.getElementById('runnerSpark');
+      runner.className = 'css-runner';
+      spark.classList.remove('show');
+
+      if(score === 0){
+        runner.classList.add('rest');
+        mood.textContent = '今週の調子：ウォームアップ中';
+      }else if(score === 1){
+        runner.classList.add('walk');
+        mood.textContent = '今週の調子：足踏み開始';
+      }else if(score <= 3){
+        runner.classList.add('jog');
+        mood.textContent = '今週の調子：いいリズム';
+      }else{
+        runner.classList.add('fast');
+        mood.textContent = '今週の調子：快調ピッチ';
+      }
+
+      if(longDone){
+        spark.classList.add('show');
+        if(score >= 3) mood.textContent = '今週の調子：ロング達成！';
+      }
+    }
+
+    function refreshJourneyMarquee(){
+      const msg = document.getElementById('journeyMsg');
+      if(!msg || !msg.parentElement) return;
+      window.requestAnimationFrame(() => {
+        msg.parentElement.classList.toggle('scroll', msg.scrollWidth > msg.parentElement.clientWidth + 6);
+      });
+    }
+
     function updateProgress(){
-      const boxes = [...document.querySelectorAll('#weekList input[type="checkbox"]')];
-      const done = boxes.filter(b=>b.checked).length;
-      const pct = boxes.length ? Math.round(done / boxes.length * 100) : 0;
-      document.getElementById('progressText').textContent = `${pct}%（${done}/${boxes.length}）`;
-      document.getElementById('progressBar').style.width = `${pct}%`;
+      const score = getAllScore();
+      const maxKey = 'summer_plan_2026_journeyMax';
+      const storedMax = Number(localStorage.getItem(maxKey) || 0);
+      const maxScore = Math.max(storedMax, score);
+      localStorage.setItem(maxKey, String(maxScore));
+
+      const stages = [
+        {step:0, cls:'stage-0', label:'朝の街', msg:'まだウォームアップ。チェックを入れるほど風景が変わります。スキップしても戻りません。'},
+        {step:3, cls:'stage-1', label:'公園の道', msg:'芽が出てきた。まずは流れを切らずに進めばOK。'},
+        {step:9, cls:'stage-2', label:'森の道', msg:'リズムが出てきた。暑熱期として十分前進中。'},
+        {step:15, cls:'stage-3', label:'山の見える道', msg:'中盤まで順調。週末ロングの積み重ねが効いています。'},
+        {step:21, cls:'stage-4', label:'湖畔の道', msg:'湖畔が見えてきた。9月の再始動に向けてかなり良い積み上げ。'},
+        {step:27, cls:'stage-5', label:'ゴール旗', msg:'W8地点に到着。ここから先はボーナス周回です。'}
+      ];
+      let stage = stages[0];
+      stages.forEach(s => { if(maxScore >= s.step) stage = s; });
+
+      const scene = document.getElementById('journeyScene');
+      scene.className = `scene ${stage.cls}`;
+      document.getElementById('sceneLabel').textContent = stage.label;
+
+      const journeyGoal = 27;
+      const extra = Math.max(0, maxScore - journeyGoal);
+      document.getElementById('journeyText').textContent = extra > 0 ? `積み上げ ${maxScore}歩｜到着＋${extra}歩` : `積み上げ ${maxScore}歩`;
+      document.getElementById('journeyMsg').textContent = stage.msg;
+      refreshJourneyMarquee();
+
+      document.querySelectorAll('.medal').forEach(medal => {
+        const step = Number(medal.dataset.step || 0);
+        medal.classList.toggle('active', maxScore >= step);
+      });
+
+      updateRunnerMood();
     }
 
     function openAll(){document.querySelectorAll('details').forEach(d=>d.open=true)}
     function resetChecks(){
       if(!confirm('この計画のチェックをリセットしますか？')) return;
       weeks.forEach((w,wi)=> w.missions.forEach((m,mi)=> localStorage.removeItem(checkKey(wi,mi))));
+      localStorage.removeItem('summer_plan_2026_journeyMax');
+      renderCurrentWeek(getCurrentIndex());
       renderWeekList(getCurrentIndex());
       updateProgress();
     }
@@ -483,6 +926,7 @@
     document.getElementById('jumpWeeks').addEventListener('click',()=>document.getElementById('weeks').scrollIntoView({behavior:'smooth'}));
     document.getElementById('openAll').addEventListener('click',openAll);
     document.getElementById('resetChecks').addEventListener('click',resetChecks);
+    window.addEventListener('resize', refreshJourneyMarquee);
   </script>
 </body>
 </html>
