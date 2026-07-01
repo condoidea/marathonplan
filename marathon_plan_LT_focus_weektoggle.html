@@ -3,655 +3,484 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>5〜6月 練習計画 2026｜スマホ用</title>
+  <title>W0–W8 夏のベース強化＆再始動計画 2026</title>
   <style>
     :root{
-      --bg:#f5f7fb;
+      --bg0:#06111f;
+      --bg1:#0a1f38;
       --card:#ffffff;
-      --text:#17212b;
-      --muted:#5f6b7a;
-      --line:#e4e9f0;
-      --accent:#2563eb;
-      --accent-soft:#eaf1ff;
-      --accent-2:#0f766e;
-      --shadow:0 10px 30px rgba(18,32,60,.08);
-      --radius:18px;
+      --text:#162033;
+      --muted:#667085;
+      --line:#e6ebf2;
+      --blue:#2563eb;
+      --cyan:#06b6d4;
+      --green:#10b981;
+      --amber:#f59e0b;
+      --rose:#f43f5e;
+      --violet:#7c3aed;
+      --soft-blue:#eef5ff;
+      --soft-green:#ecfdf5;
+      --soft-amber:#fff7ed;
+      --soft-rose:#fff1f2;
+      --shadow:0 18px 45px rgba(9, 25, 52, .14);
+      --radius:22px;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0;
-      background:linear-gradient(180deg,#f7f9fd 0%, #eef3f9 100%);
       color:var(--text);
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Sans","Noto Sans JP",sans-serif;
-      line-height:1.6;
+      line-height:1.65;
+      background:
+        radial-gradient(circle at top left, rgba(37,99,235,.30), transparent 36rem),
+        radial-gradient(circle at 85% 2%, rgba(16,185,129,.24), transparent 28rem),
+        linear-gradient(180deg,#f8fbff 0%,#eef4fb 42%,#f8fafc 100%);
     }
-    .wrap{
-      width:min(960px, 100% - 24px);
-      margin:0 auto;
-      padding:16px 0 96px;
-    }
+    .wrap{width:min(1060px, 100% - 24px); margin:0 auto; padding:16px 0 96px}
     .hero{
-      background:linear-gradient(135deg,#1d4ed8 0%,#0f766e 100%);
-      color:#fff;
-      border-radius:24px;
-      padding:20px 18px 18px;
-      box-shadow:0 16px 40px rgba(20,60,120,.18);
-      margin-top:10px;
-    }
-    .hero h1{
-      margin:0 0 8px;
-      font-size:1.35rem;
-      line-height:1.35;
-    }
-    .hero p{
-      margin:0;
-      color:rgba(255,255,255,.92);
-      font-size:.95rem;
-    }
-    .chips{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-top:14px;
-    }
-    .chip{
-      background:rgba(255,255,255,.14);
-      border:1px solid rgba(255,255,255,.18);
-      color:#fff;
-      padding:7px 11px;
-      border-radius:999px;
-      font-size:.85rem;
-      backdrop-filter: blur(6px);
-    }
-    .quicknav{
-      position:sticky;
-      top:0;
-      z-index:20;
-      margin-top:12px;
-      background:rgba(245,247,251,.82);
-      backdrop-filter: blur(10px);
-      padding:10px 0 8px;
-    }
-    .quicknav-row{
-      display:flex;
-      gap:8px;
-      overflow:auto;
-      padding-bottom:2px;
-      scrollbar-width:none;
-    }
-    .quicknav-row::-webkit-scrollbar{display:none}
-    .qbtn{
-      white-space:nowrap;
-      text-decoration:none;
-      color:var(--text);
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:999px;
-      padding:10px 14px;
-      font-size:.9rem;
-      box-shadow:var(--shadow);
-    }
-    .grid{
-      display:grid;
-      gap:14px;
-      margin-top:14px;
-    }
-    .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
+      position:relative;
       overflow:hidden;
-    }
-    .card.pad{padding:16px}
-    .section-title{
-      margin:0 0 10px;
-      font-size:1.05rem;
-    }
-    .meta{
-      color:var(--muted);
-      font-size:.92rem;
-    }
-    .week-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap:12px;
-      margin-bottom:12px;
-    }
-    .week-num{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      font-weight:700;
-      font-size:1rem;
-      flex-wrap:wrap;
-    }
-    .pill{
-      display:inline-block;
-      border-radius:999px;
-      padding:4px 9px;
-      font-size:.76rem;
-      font-weight:700;
-      background:var(--accent-soft);
-      color:var(--accent);
-      border:1px solid #cfe0ff;
-    }
-    .pill.green{
-      background:#e7f8f4;
-      color:#0f766e;
-      border-color:#c7efe7;
-    }
-    .schedule{
-      display:grid;
-      gap:10px;
-    }
-    .run{
-      border:1px solid var(--line);
-      border-radius:14px;
-      padding:12px;
-      background:#fbfcfe;
-    }
-    .run .day{
-      font-weight:700;
-      margin-bottom:4px;
-      font-size:.93rem;
-    }
-    .run .desc{
-      font-size:.95rem;
-    }
-    .highlight{
-      background:#f8fbff;
-      border:1px solid #dbe7ff;
-    }
-    .list{
-      margin:8px 0 0;
-      padding-left:18px;
-    }
-    .list li{margin:6px 0}
-    details{
-      border-top:1px solid var(--line);
-    }
-    details:first-of-type{
-      border-top:none;
-    }
-    details summary{
-      list-style:none;
-      cursor:pointer;
-      padding:14px 16px;
-      font-weight:700;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:16px;
-    }
-    details summary::-webkit-details-marker{display:none}
-    details summary .right{
-      color:var(--muted);
-      font-weight:600;
-      font-size:.87rem;
-    }
-    details .inner{
-      padding:0 16px 16px;
-      color:var(--text);
-    }
-    .week-list details.current{
-      background:#f8fbff;
-    }
-    .week-list details.current summary{
-      border-left:4px solid var(--accent);
-      padding-left:12px;
-    }
-    .roadmap{
-      display:grid;
-      gap:10px;
-    }
-    .phase{
-      border:1px solid var(--line);
-      background:#fbfcfe;
-      border-radius:16px;
-      padding:14px;
-    }
-    .phase h3{
-      margin:0 0 6px;
-      font-size:1rem;
-    }
-    .phase p{
-      margin:0 0 8px;
-      color:var(--muted);
-      font-size:.92rem;
-    }
-    .mini{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-top:8px;
-    }
-    .mini span{
-      display:inline-block;
-      border-radius:999px;
-      padding:5px 10px;
-      background:#fff;
-      border:1px solid var(--line);
-      font-size:.82rem;
-    }
-    .two-col{
-      display:grid;
-      gap:12px;
-    }
-    .note{
-      background:#fff9ed;
-      border:1px solid #f5dfb3;
-      color:#7a4b0e;
-      border-radius:14px;
-      padding:12px;
-      font-size:.92rem;
-      margin-bottom:12px;
-    }
-    .foot{
-      color:var(--muted);
-      font-size:.85rem;
-      margin-top:16px;
-      text-align:center;
-    }
-    .togglebar{
-      display:flex;
-      gap:8px;
-      margin-top:10px;
-      flex-wrap:wrap;
-    }
-    button{
-      appearance:none;
-      border:none;
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:999px;
-      padding:10px 14px;
-      font-size:.9rem;
-      color:var(--text);
-      cursor:pointer;
-      box-shadow:var(--shadow);
-    }
-    button.primary{
-      background:var(--accent);
+      border-radius:30px;
+      padding:22px 18px 18px;
       color:#fff;
-      border-color:var(--accent);
+      background:
+        linear-gradient(135deg,rgba(12,38,78,.98),rgba(18,87,125,.92) 47%,rgba(18,120,90,.92)),
+        radial-gradient(circle at 88% 18%,rgba(255,255,255,.28),transparent 11rem);
+      box-shadow:0 24px 60px rgba(6,32,72,.25);
+      margin-top:10px;
+      isolation:isolate;
     }
-    @media (min-width:768px){
-      .wrap{width:min(1080px, 100% - 40px); padding-top:24px}
-      .hero{padding:24px 24px 22px}
-      .hero h1{font-size:1.8rem}
-      .grid.main{grid-template-columns:1.12fr .88fr; align-items:start}
-      .two-col{grid-template-columns:1fr 1fr}
+    .hero::before{
+      content:"";
+      position:absolute; inset:-80px -120px auto auto;
+      width:260px; height:260px;
+      background:radial-gradient(circle,rgba(255,255,255,.28),transparent 60%);
+      transform:rotate(25deg);
+      z-index:-1;
+    }
+    .kicker{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-bottom:10px; font-weight:800; letter-spacing:.05em; font-size:.78rem; color:#dbeafe}
+    .spark{display:inline-flex; width:28px; height:28px; align-items:center; justify-content:center; border-radius:999px; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.22)}
+    h1{margin:0; font-size:1.55rem; line-height:1.25; letter-spacing:.01em}
+    .hero p{margin:10px 0 0; color:rgba(255,255,255,.88); font-size:.96rem}
+    .chips,.mini{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px}
+    .chip,.mini span{
+      display:inline-flex; align-items:center; gap:6px;
+      border-radius:999px;
+      padding:7px 11px;
+      font-size:.82rem;
+      font-weight:700;
+    }
+    .chip{background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.20); color:#fff; backdrop-filter:blur(6px)}
+    .hero-stats{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:16px}
+    .stat{border:1px solid rgba(255,255,255,.17); background:rgba(255,255,255,.12); border-radius:18px; padding:10px 8px; backdrop-filter:blur(8px)}
+    .stat b{display:block; font-size:1.05rem; line-height:1.2}
+    .stat span{display:block; color:rgba(255,255,255,.78); font-size:.74rem; margin-top:2px}
+    .quicknav{position:sticky; top:0; z-index:30; margin-top:12px; padding:10px 0 8px; background:rgba(248,251,255,.82); backdrop-filter:blur(14px)}
+    .quicknav-row{display:flex; gap:8px; overflow:auto; padding:2px 1px 4px; scrollbar-width:none}
+    .quicknav-row::-webkit-scrollbar{display:none}
+    .qbtn,button{
+      white-space:nowrap; text-decoration:none; color:var(--text); background:#fff; border:1px solid var(--line); border-radius:999px; padding:10px 14px; font-size:.9rem; font-weight:800; box-shadow:0 10px 26px rgba(17,37,78,.08)
+    }
+    button{cursor:pointer; appearance:none}
+    button.primary,.qbtn.primary{background:linear-gradient(135deg,var(--blue),var(--cyan)); color:#fff; border-color:transparent}
+    .grid{display:grid; gap:14px; margin-top:14px}
+    .main{grid-template-columns:1fr}
+    .card{background:rgba(255,255,255,.95); border:1px solid rgba(230,235,242,.9); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden}
+    .pad{padding:16px}
+    .section-title{margin:0 0 10px; font-size:1.08rem; letter-spacing:.01em}
+    .meta{color:var(--muted); font-size:.93rem}
+    .week-hero{background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%)}
+    .week-head{display:flex; justify-content:space-between; gap:12px; align-items:flex-start; margin-bottom:12px}
+    .week-title{font-weight:900; font-size:1.15rem; line-height:1.3}
+    .date{color:var(--muted); font-size:.9rem; margin-top:3px}
+    .pill{display:inline-flex; align-items:center; gap:5px; border-radius:999px; padding:5px 10px; font-size:.76rem; font-weight:900; background:var(--soft-blue); color:var(--blue); border:1px solid #cfe0ff}
+    .pill.green{background:var(--soft-green); color:#047857; border-color:#bbf7d0}
+    .pill.amber{background:var(--soft-amber); color:#b45309; border-color:#fed7aa}
+    .pill.rose{background:var(--soft-rose); color:#be123c; border-color:#fecdd3}
+    .mission{display:grid; gap:10px; margin-top:12px}
+    .mission-card{border:1px solid var(--line); background:#fbfdff; border-radius:18px; padding:12px}
+    .mission-card .label{font-size:.78rem; color:var(--muted); font-weight:900; letter-spacing:.03em; text-transform:uppercase}
+    .mission-card .value{font-weight:900; margin-top:2px}
+    .progressBox{margin-top:14px; border:1px solid #dbeafe; background:linear-gradient(180deg,#f8fbff,#eef6ff); border-radius:18px; padding:12px}
+    .progressTop{display:flex; justify-content:space-between; gap:8px; align-items:center; font-size:.86rem; font-weight:900}
+    .bar{height:11px; background:#dbeafe; border-radius:999px; overflow:hidden; margin-top:8px}
+    .bar span{display:block; height:100%; width:0%; background:linear-gradient(90deg,var(--green),var(--cyan),var(--blue)); border-radius:inherit; transition:width .35s ease}
+    .schedule{display:grid; gap:10px}
+    .run{position:relative; display:grid; grid-template-columns:auto 1fr; gap:10px; align-items:flex-start; border:1px solid var(--line); border-radius:18px; padding:12px; background:#fbfcfe}
+    .run.key{border-color:#bfdbfe; background:linear-gradient(180deg,#f8fbff,#eef6ff)}
+    .run .check{width:26px; height:26px; margin-top:2px; accent-color:var(--blue)}
+    .run .day{font-weight:900; font-size:.92rem; display:flex; align-items:center; gap:6px; flex-wrap:wrap}
+    .run .desc{font-size:.96rem; margin-top:2px}
+    .tagline{color:var(--muted); font-size:.85rem; margin-top:4px}
+    .heat{border-left:4px solid var(--amber); padding-left:10px; color:#7a4b0e; background:#fffaf0; border-radius:12px; padding-top:8px; padding-bottom:8px; margin-top:10px; font-size:.9rem}
+    details{border-top:1px solid var(--line)}
+    details:first-child{border-top:none}
+    details summary{list-style:none; cursor:pointer; padding:15px 16px; font-weight:900; display:flex; justify-content:space-between; gap:16px; align-items:center}
+    details summary::-webkit-details-marker{display:none}
+    details summary .right{color:var(--muted); font-size:.84rem; font-weight:800; text-align:right}
+    details .inner{padding:0 16px 16px}
+    details.current{background:linear-gradient(180deg,#f8fbff,#fff)}
+    details.current summary{border-left:5px solid var(--blue); padding-left:11px}
+    .week-list{display:grid; gap:0}
+    .week-card-title{display:flex; gap:8px; flex-wrap:wrap; align-items:center}
+    .note{border:1px solid #f5dfb3; background:#fff9ed; color:#744210; border-radius:16px; padding:12px; font-size:.93rem; margin:12px 0}
+    .success{border:1px solid #bbf7d0; background:#f0fdf4; color:#065f46; border-radius:16px; padding:12px; font-size:.92rem; margin-top:12px}
+    .warn{border:1px solid #fecdd3; background:#fff1f2; color:#9f1239; border-radius:16px; padding:12px; font-size:.92rem; margin-top:12px}
+    .roadmap{display:grid; gap:10px}
+    .phase{border:1px solid var(--line); background:#fbfcfe; border-radius:18px; padding:14px}
+    .phase h3{margin:0 0 6px; font-size:1rem}
+    .phase p{margin:0; color:var(--muted); font-size:.92rem}
+    .mini span{background:#fff; border:1px solid var(--line); color:#344054}
+    .togglebar{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px}
+    .scoreboard{display:grid; grid-template-columns:repeat(2,1fr); gap:10px}
+    .score{border-radius:18px; border:1px solid var(--line); background:#fff; padding:12px}
+    .score b{display:block; font-size:1.05rem}
+    .score span{display:block; color:var(--muted); font-size:.82rem; margin-top:2px}
+    .timeline{display:grid; gap:8px; margin-top:12px}
+    .lane{position:relative; display:grid; grid-template-columns:56px 1fr; gap:10px; align-items:center}
+    .badge{width:48px; height:48px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-weight:950; color:#fff; background:linear-gradient(135deg,var(--blue),var(--cyan)); box-shadow:0 12px 25px rgba(37,99,235,.22)}
+    .laneText{border:1px solid var(--line); background:#fff; border-radius:16px; padding:10px 12px}
+    .laneText b{display:block; font-size:.94rem}
+    .laneText span{display:block; color:var(--muted); font-size:.84rem}
+    .foot{color:var(--muted); font-size:.84rem; text-align:center; margin-top:16px}
+    @media (min-width:800px){
+      .wrap{width:min(1120px,100% - 42px); padding-top:24px}
+      .hero{padding:28px 28px 24px}
+      h1{font-size:2rem}
+      .main{grid-template-columns:1.1fr .9fr; align-items:start}
+      .mission{grid-template-columns:repeat(3,1fr)}
       .schedule{grid-template-columns:1fr 1fr}
+      .scoreboard{grid-template-columns:repeat(4,1fr)}
+      .roadmap{grid-template-columns:repeat(2,1fr)}
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header class="hero">
-      <h1>5〜6月 ベース再構築計画 2026<br>秋ハーフ1:35／冬フル3:42に向けた土台作り</h1>
-      <p>前提：静岡後の回復ブロック完了後。5〜6月は「維持」ではなく土台再構築。最低週2本、可能なら週3本へ近づける。</p>
+      <div class="kicker"><span class="spark">⚡</span><span>SUMMER BASE BUILD 2026</span></div>
+      <h1>W0–W8 夏のベース強化＆再始動計画<br>7/5までをW0、8/30までギアを一段上げる</h1>
+      <p>暑さで無理に伸ばさない。ただし「週2で維持」から「週3を安定、余裕週は少し積む」へ。秋ハーフ1:35、冬フル3:42、上振れ3:35方向へつなぐ8週間。</p>
       <div class="chips">
-        <span class="chip">平日 2〜3回の機会</span>
-        <span class="chip">週末 1日</span>
-        <span class="chip">最低ライン 週2本</span>
-        <span class="chip">標準ライン 週3本寄り</span>
-        <span class="chip">雨・体調不良はスキップ可</span>
+        <span class="chip">🎯 まず週3の再現性</span>
+        <span class="chip">🔥 暑熱日は距離より負荷感</span>
+        <span class="chip">🦵 補強 1〜2回/週</span>
+        <span class="chip">💧 90分超は補給練習</span>
+        <span class="chip">🚫 取り返し禁止</span>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><b>W0 + 8</b><span>8/30まで</span></div>
+        <div class="stat"><b>3 runs</b><span>標準ライン</span></div>
+        <div class="stat"><b>40km</b><span>8月後半の上振れ目安</span></div>
       </div>
     </header>
 
     <nav class="quicknav" aria-label="クイックナビ">
       <div class="quicknav-row">
-        <a class="qbtn" href="#thisweek">今週</a>
-        <a class="qbtn" href="#weeks">8週間</a>
-        <a class="qbtn" href="#foundation">この期の狙い</a>
-        <a class="qbtn" href="#diagnostic">診断ロング</a>
+        <a class="qbtn primary" href="#thisweek">今週</a>
+        <a class="qbtn" href="#weeks">W0–W8</a>
         <a class="qbtn" href="#rules">運用ルール</a>
-        <a class="qbtn" href="#roadmap">後半への接続</a>
+        <a class="qbtn" href="#gear">ギア上げ方針</a>
+        <a class="qbtn" href="#strength">補強・補給</a>
+        <a class="qbtn" href="#roadmap">秋への接続</a>
       </div>
     </nav>
 
     <div class="grid main">
-      <section id="thisweek" class="card pad">
+      <section id="thisweek" class="card pad week-hero">
         <div class="week-head">
           <div>
-            <div class="week-num"><span id="currentWeekNum">Week -</span> <span class="pill">今週</span></div>
-            <div class="meta" id="currentWeekDates">-</div>
+            <div class="week-title" id="currentWeekNum">W-</div>
+            <div class="date" id="currentWeekDates">-</div>
           </div>
-          <div class="pill green" id="currentPhase">ベース再構築</div>
+          <span class="pill green" id="currentPhase">夏ベース</span>
         </div>
-
-        <h2 class="section-title">今週やること</h2>
-        <div class="schedule" id="currentWeekSchedule"></div>
-
-        <div class="card pad highlight" style="margin-top:14px">
-          <h3 class="section-title" style="margin-bottom:6px">今週の狙い</h3>
-          <div class="meta" id="currentWeekGoal"></div>
+        <h2 class="section-title">今週のミッション</h2>
+        <div class="mission" id="currentMissions"></div>
+        <div class="progressBox">
+          <div class="progressTop"><span>この計画のチェック達成率</span><span id="progressText">0%</span></div>
+          <div class="bar"><span id="progressBar"></span></div>
         </div>
-
         <div class="togglebar">
-          <button class="primary" type="button" id="jumpWeeks">8週間を見る</button>
-          <button type="button" id="openAll">全セクションを開く</button>
+          <button class="primary" type="button" id="jumpWeeks">W0–W8を見る</button>
+          <button type="button" id="openAll">全部開く</button>
+          <button type="button" id="resetChecks">チェックをリセット</button>
         </div>
       </section>
 
       <aside class="grid">
-        <section id="foundation" class="card pad">
-          <h2 class="section-title">この期の優先順位</h2>
-          <ol class="list" style="padding-left:20px">
-            <li>週2〜3本の習慣を安定させる</li>
-            <li>週末12〜16kmのEを土台にする</li>
-            <li>5月後半〜6月前半に診断ロングを1本入れる</li>
-            <li>秋ハーフの巡航力と冬フルの後半耐久につながる脚を作る</li>
-          </ol>
-        </section>
-
         <section class="card pad">
-          <h2 class="section-title">目標の明文化</h2>
-          <div class="mini">
-            <span>秋ハーフ 1:35前後</span>
-            <span>冬フル 3:42前後</span>
-            <span>純粋なスピード不足が主因ではない</span>
-            <span>後半耐久と攣り対策が主課題</span>
+          <h2 class="section-title">この8週間の勝ち筋</h2>
+          <div class="scoreboard">
+            <div class="score"><b>週3化</b><span>まず再現性</span></div>
+            <div class="score"><b>長めE</b><span>12→18kmへ</span></div>
+            <div class="score"><b>軽い刺激</b><span>流し・steady</span></div>
+            <div class="score"><b>補強</b><span>攣り耐性</span></div>
           </div>
+          <div class="note">「ギアを上げる」は、いきなりT走を増やすことではなく、暑さに負けずに週3本と通常ロングを安定させ、8月後半から軽い質を戻すこと。</div>
         </section>
-
-        <section class="card pad">
-          <h2 class="section-title">この期で無理にやらないこと</h2>
-          <ul class="list">
-            <li>距離の取り返し</li>
-            <li>雨週の帳尻合わせ</li>
-            <li>VO2max寄りの重い質練習</li>
-            <li>毎週の長大ロング</li>
-          </ul>
-        </section>
-
-        <section class="card pad">
-          <h2 class="section-title">冬フルの扱い</h2>
-          <div class="meta">冬のフル2本は、機械的に「1本目は調整、2本目だけ本命」とは固定しない。両方ともPB機会として扱い、実際の本命度は天候・コース・時期で後から決める。</div>
+        <section id="gear" class="card pad">
+          <h2 class="section-title">ギア上げの段階</h2>
+          <div class="timeline">
+            <div class="lane"><div class="badge">W0</div><div class="laneText"><b>リズム再開</b><span>1週間空きから普通に戻す。取り返さない。</span></div></div>
+            <div class="lane"><div class="badge">W1</div><div class="laneText"><b>週3チャレンジ</b><span>平日2本＋週末Eを標準化。</span></div></div>
+            <div class="lane"><div class="badge">W4</div><div class="laneText"><b>少し積む</b><span>短いsteadyや16〜18kmを条件付きで。</span></div></div>
+            <div class="lane"><div class="badge">W8</div><div class="laneText"><b>再始動</b><span>秋に向けて軽い質を戻す入口。</span></div></div>
+          </div>
         </section>
       </aside>
     </div>
 
     <section id="weeks" class="card" style="margin-top:14px">
       <details open>
-        <summary>
-          <span>5〜6月の8週間計画</span>
-          <span class="right">今週は自動で先頭表示</span>
-        </summary>
+        <summary><span>W0–W8 週間メニュー</span><span class="right">チェックはこの端末に保存</span></summary>
         <div class="inner">
-          <div class="note">この8週間は、5月以降の土台作り。継続性が最優先。週2本でも可だが、生活と天候が許す週は3本寄りへ。平日E、週末E、時々流しが基本。</div>
+          <div class="note">W0を今週扱いにして、W1〜W8で8/30まで進める構成。暑熱・台風・仕事で崩れた週は、成功ラインだけ拾えばOK。</div>
           <div class="week-list" id="weekList"></div>
-        </div>
-      </details>
-    </section>
-
-    <section id="diagnostic" class="card" style="margin-top:14px">
-      <details>
-        <summary>
-          <span>脚攣り確認用の診断ロング</span>
-          <span class="right">5月後半〜6月前半に1回</span>
-        </summary>
-        <div class="inner">
-          <div class="two-col">
-            <div class="phase">
-              <h3>入れる時期</h3>
-              <p>気温が極端に高くない日。5月後半〜6月前半が第一候補。直前の週に疲労や体調不良があるなら後ろへずらす。</p>
-            </div>
-            <div class="phase">
-              <h3>内容</h3>
-              <p>20〜24km。前半はE、後半だけ少し前へ。全力化しない。目的は追い込むことではなく、攣りの予兆と後半の脚の変化を見ること。</p>
-            </div>
-          </div>
-          <ul class="list">
-            <li>確認項目：違和感の最初の距離、部位、補給、給水、気温、フォーム感覚</li>
-            <li>暑すぎる日、睡眠不足の日、体調が微妙な日は実施しない</li>
-            <li>実施後の数日は保守的に戻す</li>
-          </ul>
         </div>
       </details>
     </section>
 
     <section id="rules" class="card" style="margin-top:14px">
       <details>
-        <summary>
-          <span>運用ルール</span>
-          <span class="right">梅雨・体調・計画外対応</span>
-        </summary>
+        <summary><span>運用ルール</span><span class="right">暑熱・雨・寝坊・仕事対応</span></summary>
         <div class="inner">
-          <div class="two-col">
-            <div class="phase">
-              <h3>基本ルール</h3>
-              <ul class="list">
-                <li>悪天候・体調不良はスキップ可</li>
-                <li>抜けた分を取り返さない</li>
-                <li>最低ラインは週2本でよい</li>
-                <li>平日は40〜55分、週末は12〜16kmEが基準</li>
-                <li>流しは余裕がある週だけ少量</li>
-              </ul>
-            </div>
-            <div class="phase">
-              <h3>成功基準</h3>
-              <ul class="list">
-                <li>雨週でも完全に流れを失わない</li>
-                <li>週末Eの距離感が安定してくる</li>
-                <li>診断ロングを無理なく1回入れられる</li>
-                <li>7月の暑熱期に疲労を持ち込まない</li>
-              </ul>
-            </div>
+          <div class="roadmap">
+            <div class="phase"><h3>1. 取り返さない</h3><p>抜けた本数を翌日に足さない。次に走れる日に普通のEで戻す。</p></div>
+            <div class="phase"><h3>2. 暑い日は負荷感優先</h3><p>ペースは簡単に20〜40秒/km落としてよい。心拍・発汗・睡眠を優先。</p></div>
+            <div class="phase"><h3>3. 週3が無理なら週2で成立</h3><p>水曜E＋週末ロングのように、1本短め＋1本長めなら流れは切れない。</p></div>
+            <div class="phase"><h3>4. 強いロングはまだ毎週やらない</h3><p>5/31の21km診断ロングは成功例。夏は通常ロングの再現性を優先。</p></div>
           </div>
+        </div>
+      </details>
+    </section>
+
+    <section id="strength" class="card" style="margin-top:14px">
+      <details>
+        <summary><span>補強・補給ミッション</span><span class="right">走れない週の得点源</span></summary>
+        <div class="inner">
+          <div class="roadmap">
+            <div class="phase"><h3>補強 15〜20分</h3><p>ヒップヒンジ、片脚デッドリフト動作、カーフレイズ、片脚バランス、軽い体幹。翌日のランを壊さない軽さ。</p><div class="mini"><span>臀部</span><span>ハム</span><span>カーフ</span><span>片脚支持</span></div></div>
+            <div class="phase"><h3>補給練習</h3><p>90分を超えるロングでは、給水と糖質を少し試す。真夏は「気温が低いのに汗が多い」日も水分を軽視しない。</p><div class="mini"><span>水分</span><span>ジェル</span><span>電解質</span><span>胃腸チェック</span></div></div>
+          </div>
+          <div class="success">雨や台風で走れない週は、補強を1回できたら「流れを守った」と判定してよい。</div>
         </div>
       </details>
     </section>
 
     <section id="roadmap" class="card" style="margin-top:14px">
       <details>
-        <summary>
-          <span>この先への接続</span>
-          <span class="right">7月以降の意味づけ</span>
-        </summary>
+        <summary><span>秋への接続</span><span class="right">8/30時点でこうなっていたい</span></summary>
         <div class="inner">
           <div class="roadmap">
-            <div class="phase">
-              <h3>7〜8月前半｜暑熱対応・維持</h3>
-              <p>5〜6月で作った習慣を壊さず、早朝か夜のE中心で維持。距離より負荷感を優先。</p>
-              <div class="mini"><span>暑さ対応</span><span>短めE</span><span>維持</span></div>
-            </div>
-            <div class="phase">
-              <h3>8月後半〜9月｜再始動</h3>
-              <p>週1回前後の軽い質を再導入。短いT、cruise、mild progression、流し中心。耐久重視で再開する。</p>
-              <div class="mini"><span>週1軽い質</span><span>耐久重視</span><span>VO2偏重なし</span></div>
-            </div>
-            <div class="phase">
-              <h3>10〜11月｜ハーフ本格期</h3>
-              <p>4:30前後の巡航力を育てて、秋ハーフ1:35前後を狙う。threshold / cruise中心。</p>
-              <div class="mini"><span>ハーフ1:35</span><span>巡航力</span><span>週1質</span></div>
-            </div>
-            <div class="phase">
-              <h3>12〜3月｜冬フル期</h3>
-              <p>後半で壊れにくい脚、補給再現性、保守的前半運びを強化。2本の冬フルはどちらもPB機会として扱う。</p>
-              <div class="mini"><span>フル3:42</span><span>後半耐久</span><span>2本ともPB機会</span></div>
-            </div>
+            <div class="phase"><h3>最低成功ライン</h3><p>暑熱期でも週2〜3本を維持。週末12〜16kmを普通に戻せる。脚の張りを残さない。</p></div>
+            <div class="phase"><h3>標準成功ライン</h3><p>週3本が多くなり、16〜18kmの通常ロングが安定。流しや短いsteadyを入れても翌日に残らない。</p></div>
+            <div class="phase"><h3>上振れライン</h3><p>涼しい週に35〜40km程度まで自然に積める。8月後半に軽いqualityを1本入れても週末ロングが崩れない。</p></div>
+            <div class="phase"><h3>秋の入口</h3><p>9月から短いT/cruise、Mペース寄りの長めEを少しずつ入れる準備が整う。</p></div>
           </div>
         </div>
       </details>
     </section>
-
-    <div class="foot">5〜6月ベース再構築フェーズ用に、既存のスマホ向け書式を踏襲して再構成した版</div>
+    <div class="foot">添付HTMLのスマホ向け週トグル構成をベースに、W0–W8版として再設計。チェック状態はブラウザのlocalStorageに保存されます。</div>
   </div>
 
   <script>
-    const startDate = new Date('2026-05-04T00:00:00');
-    const phaseLabel = 'ベース再構築';
+    const planStart = new Date('2026-06-30T00:00:00');
+    const phaseLabel = '夏ベース強化';
     const weeks = [
       {
-        num:1,
-        dates:'5/4–5/10',
-        goal:'回復ブロックから自然につなぐ。頻度を急に増やさず、まずは平日1〜2本＋週末Eへ。',
-        sessions:[
-          {day:'平日1本目', desc:'45〜50分 E'},
-          {day:'余裕があれば平日2本目', desc:'30〜40分 E'},
-          {day:'週末', desc:'12〜14km E'},
-          {day:'補強', desc:'自重 1〜2回'}
-        ]
+        code:'W0', dates:'6/30–7/5', type:'Reset', km:'18–24km目安',
+        goal:'1週間ぶりから普通に戻す週。6/30のEは良い再開。残りは取り返さず、週末Eを軽く成立させる。',
+        missions:[
+          {label:'実施済み', value:'6/30 火：6.78km E。再開として十分良い。', done:true},
+          {label:'平日もう1本', value:'木〜金：35〜45分 E。暑ければ省略可。'},
+          {label:'週末', value:'12〜14km E。暑ければ10〜12kmで成功扱い。', key:true},
+          {label:'補強', value:'15分だけでもOK。カーフ・臀部・片脚支持。'}
+        ],
+        heat:'1週間空いた後なので、涼しくても18km以上や後半強めは不要。まずリズム優先。'
       },
       {
-        num:2,
-        dates:'5/11–5/17',
-        goal:'週3本寄りの感覚を試す。まだ質は不要。終始Eで進める。',
-        sessions:[
-          {day:'平日1本目', desc:'45〜50分 E'},
-          {day:'平日2本目', desc:'35〜45分 E'},
-          {day:'週末', desc:'13〜15km E'},
-          {day:'余裕があれば', desc:'流し 4本'}
-        ]
+        code:'W1', dates:'7/6–7/12', type:'Build', km:'27–32km目安',
+        goal:'週3本の標準形に戻す。強度ではなく、平日2本＋週末Eのリズムを作る。',
+        missions:[
+          {label:'平日1', value:'45〜50分 E。最後に流し20秒×3〜4本は可。'},
+          {label:'平日2', value:'40〜45分 E。心拍・汗が重ければ完全E。'},
+          {label:'週末', value:'14〜16km E。最後は上げずに余裕残し。', key:true},
+          {label:'補強', value:'1〜2回。ラン翌日は軽め。'}
+        ],
+        heat:'気温・湿度が高ければ、週末は12〜14kmで十分。ペースは6\'30/km前後でも価値あり。'
       },
       {
-        num:3,
-        dates:'5/18–5/24',
-        goal:'週末Eの持続時間を少し伸ばす。診断ロング前の土台週。',
-        sessions:[
-          {day:'平日1本目', desc:'45〜50分 E'},
-          {day:'平日2本目', desc:'35〜45分 E + 流し 4〜6本'},
-          {day:'週末', desc:'14〜16km E'},
-          {day:'補強', desc:'自重 1回以上'}
-        ]
+        code:'W2', dates:'7/13–7/19', type:'Build+', km:'30–35km目安',
+        goal:'少しギアを上げる週。ただし夏なので、上げる対象は「本数と持続時間」。',
+        missions:[
+          {label:'平日1', value:'50分 E。余裕があれば後半だけ自然に少し前へ。'},
+          {label:'平日2', value:'40分 E + 流し20秒×4本。重ければ流しなし。'},
+          {label:'週末', value:'15〜17km E。涼しければ最後2kmだけ6\'00〜6\'10。', key:true},
+          {label:'補強', value:'ヒップヒンジ＋カーフ中心に15〜20分。'}
+        ],
+        heat:'「最後2km前へ」は涼しい日限定。暑い日は完全Eで終えた方が勝ち。'
       },
       {
-        num:4,
-        dates:'5/25–5/31',
-        goal:'診断ロング週。前半は整え、後半だけ少し前へ。追い込みではなく観察。',
-        sessions:[
-          {day:'平日1本目', desc:'40〜45分 E'},
-          {day:'平日2本目', desc:'30〜40分 E（省略可）'},
-          {day:'週末', desc:'診断ロング 20〜22km（前半E、後半やや前）'},
-          {day:'確認', desc:'部位・距離・補給・給水・気温を記録'}
-        ]
+        code:'W3', dates:'7/20–7/26', type:'Absorb', km:'24–30km目安',
+        goal:'吸収週。前2週で積めたら少し軽くし、暑熱疲労を残さない。',
+        missions:[
+          {label:'平日1', value:'40〜45分 回復E。ペース不問。'},
+          {label:'平日2', value:'45分 E + 流し20秒×3本まで。'},
+          {label:'週末', value:'12〜14km E。余裕残しで終了。', key:true},
+          {label:'任意', value:'涼しく脚が軽い時だけ25〜30分の短いEを追加可。'}
+        ],
+        heat:'夏の疲労は遅れて出る。眠気・だるさ・心拍高めなら迷わず週2へ。'
       },
       {
-        num:5,
-        dates:'6/1–6/7',
-        goal:'診断ロング後の戻し。疲労を抜きながらリズムは残す。',
-        sessions:[
-          {day:'平日1本目', desc:'40〜45分 E'},
-          {day:'余裕があれば平日2本目', desc:'30〜40分 E'},
-          {day:'週末', desc:'10〜12km E'},
-          {day:'補強', desc:'軽め 1回'}
-        ]
+        code:'W4', dates:'7/27–8/2', type:'Step up', km:'32–38km目安',
+        goal:'中間のギアアップ週。短いsteadyを入れても、週末ロングを壊さない範囲に留める。',
+        missions:[
+          {label:'平日1', value:'50〜55分 E。余裕があれば最後に流し×4。'},
+          {label:'平日2', value:'45分内で 5分steady×3（5\'45〜6\'00/km目安）／つなぎE。'},
+          {label:'週末', value:'16〜18km E。後半上げは不要。', key:true},
+          {label:'補強', value:'補強1回。ハム・臀部に張りを残さない強度。'}
+        ],
+        heat:'steadyは「気持ちよく前へ」まで。T走ではない。暑い日は平日2も全Eに変更。'
       },
       {
-        num:6,
-        dates:'6/8–6/14',
-        goal:'通常ベースへ戻す。標準ラインの週3本寄りを再開。',
-        sessions:[
-          {day:'平日1本目', desc:'45〜50分 E'},
-          {day:'平日2本目', desc:'35〜45分 E'},
-          {day:'週末', desc:'14〜16km E'},
-          {day:'余裕があれば', desc:'流し 4本'}
-        ]
+        code:'W5', dates:'8/3–8/9', type:'Hold', km:'30–36km目安',
+        goal:'真夏の維持強化。小さな刺激を入れつつ、週末Eの安定を優先。',
+        missions:[
+          {label:'平日1', value:'45分 E + 流し20秒×4〜5本。'},
+          {label:'平日2', value:'50分 E。涼しければ8分steady×2（5\'45〜6\'00/km目安）。'},
+          {label:'週末', value:'14〜16km E。90分前後なら給水を試す。', key:true},
+          {label:'補強', value:'カーフレイズ＋片脚バランス。短く継続。'}
+        ],
+        heat:'この週は無理に伸ばさない。湿度が高ければ週末12〜14kmでも成功。'
       },
       {
-        num:7,
-        dates:'6/15–6/21',
-        goal:'梅雨の崩れ込みを見ながら継続性を確保。できる週だけ3本。',
-        sessions:[
-          {day:'平日1本目', desc:'45〜55分 E'},
-          {day:'平日2本目', desc:'35〜45分 E または省略'},
-          {day:'週末', desc:'14〜16km E'},
-          {day:'補強', desc:'自重 1回'}
-        ]
+        code:'W6', dates:'8/10–8/16', type:'Freshen', km:'24–31km目安',
+        goal:'お盆・暑熱対応のフレッシュ週。次の再始動に備えて余裕を作る。',
+        missions:[
+          {label:'平日1', value:'40〜50分 E。楽に終える。'},
+          {label:'平日2', value:'35〜45分 E。省略可。'},
+          {label:'週末', value:'12〜15km E。暑ければ10〜12km。', key:true},
+          {label:'補強', value:'走れない日は補強15分で代替。'}
+        ],
+        heat:'ここで疲労を抜けると、W7〜W8で自然にギアが上がる。'
       },
       {
-        num:8,
-        dates:'6/22–6/28',
-        goal:'7月の暑熱期に向けて疲労を軽くまとめる。量より鮮度。',
-        sessions:[
-          {day:'平日1本目', desc:'40〜45分 E'},
-          {day:'平日2本目', desc:'30〜40分 E（余裕があれば）'},
-          {day:'週末', desc:'12〜14km E'},
-          {day:'備考', desc:'疲れがあれば距離短縮でよい'}
-        ]
+        code:'W7', dates:'8/17–8/23', type:'Restart', km:'34–40km目安',
+        goal:'秋に向けた再始動。軽い質を1本だけ入れ、週末の長めEと両立できるか確認する。',
+        missions:[
+          {label:'平日1', value:'50分 E + 流し20秒×4本。'},
+          {label:'平日2', value:'50分内で 8分steady×3（5\'30〜5\'45/km目安）／つなぎE。'},
+          {label:'週末', value:'16〜18km E。涼しければ最後3kmだけ6\'00前後。', key:true},
+          {label:'任意4本目', value:'脚が軽い週だけ25〜30分 E。無理なら不要。'}
+        ],
+        heat:'steadyはMP寄りの準備であり、追い込みではない。心拍が高ければ全Eへ。'
+      },
+      {
+        code:'W8', dates:'8/24–8/30', type:'Launch', km:'35–42km目安',
+        goal:'9月の入口を作る週。軽いqualityと通常ロングを両立できれば上出来。',
+        missions:[
+          {label:'平日1', value:'45〜50分 E。週後半に備えて軽く。'},
+          {label:'平日2', value:'15分WU → 5分steady×4（5\'25〜5\'40/km目安）→ CD。'},
+          {label:'週末', value:'16〜18km E。涼しく余裕があれば18〜20kmまで。', key:true},
+          {label:'補給', value:'90分超なら給水＋糖質を少し試す。'}
+        ],
+        heat:'8月末でも暑ければ、qualityは流しだけに置換。ここで無理せず9月へつなぐ。'
       }
     ];
 
-    function getCurrentWeek(){
+    function getCurrentIndex(){
       const today = new Date();
-      const diffMs = today - startDate;
-      const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+      const diffDays = Math.floor((today - planStart) / (1000*60*60*24));
       let idx = Math.floor(diffDays / 7);
-      if (idx < 0) idx = 0;
-      if (idx >= weeks.length) idx = weeks.length - 1;
+      if(idx < 0) idx = 0;
+      if(idx >= weeks.length) idx = weeks.length - 1;
       return idx;
+    }
+
+    function safeId(text){return text.replace(/[^a-zA-Z0-9_-]/g,'_')}
+    function checkKey(wi, mi){return `summer_plan_2026_${weeks[wi].code}_${mi}`}
+
+    function createRun(item, wi, mi){
+      const div = document.createElement('div');
+      div.className = 'run' + (item.key ? ' key' : '');
+      const key = checkKey(wi, mi);
+      const stored = localStorage.getItem(key);
+      const checked = stored === null ? !!item.done : stored === '1';
+      div.innerHTML = `<input class="check" type="checkbox" ${checked ? 'checked' : ''} aria-label="${item.label}">
+        <div><div class="day">${item.key ? '⭐ ' : ''}${item.label}</div><div class="desc">${item.value}</div></div>`;
+      const cb = div.querySelector('input');
+      cb.addEventListener('change', () => { localStorage.setItem(key, cb.checked ? '1' : '0'); updateProgress(); });
+      return div;
     }
 
     function renderCurrentWeek(index){
       const w = weeks[index];
-      document.getElementById('currentWeekNum').textContent = `Week ${w.num}`;
-      document.getElementById('currentWeekDates').textContent = w.dates;
+      document.getElementById('currentWeekNum').textContent = `${w.code}｜${w.type}`;
+      document.getElementById('currentWeekDates').textContent = `${w.dates}　${w.km}`;
       document.getElementById('currentPhase').textContent = phaseLabel;
-      document.getElementById('currentWeekGoal').textContent = w.goal;
-
-      const wrap = document.getElementById('currentWeekSchedule');
-      wrap.innerHTML = '';
-      w.sessions.forEach(item => {
-        const div = document.createElement('div');
-        div.className = 'run';
-        div.innerHTML = `<div class="day">${item.day}</div><div class="desc">${item.desc}</div>`;
-        wrap.appendChild(div);
+      const host = document.getElementById('currentMissions');
+      host.innerHTML = '';
+      w.missions.forEach((m,i)=>{
+        const c = document.createElement('div');
+        c.className = 'mission-card';
+        c.innerHTML = `<div class="label">${m.label}</div><div class="value">${m.value}</div>`;
+        host.appendChild(c);
       });
     }
 
     function renderWeekList(currentIndex){
       const host = document.getElementById('weekList');
-      host.innerHTML = '';
-      weeks.forEach((w, i) => {
-        const details = document.createElement('details');
-        if (i === currentIndex) details.open = true;
-        if (i === currentIndex) details.classList.add('current');
-
+      host.innerHTML='';
+      weeks.forEach((w, wi)=>{
+        const d = document.createElement('details');
+        if(wi === currentIndex) { d.open = true; d.classList.add('current'); }
         const summary = document.createElement('summary');
-        summary.innerHTML = `<span>Week ${w.num}｜${w.dates}</span><span class="right">${i === currentIndex ? '現在の週' : '開く'}</span>`;
-        details.appendChild(summary);
-
+        summary.innerHTML = `<span class="week-card-title"><span>${w.code}｜${w.dates}</span><span class="pill ${wi===currentIndex?'green':'amber'}">${w.type}</span></span><span class="right">${w.km}</span>`;
+        d.appendChild(summary);
         const inner = document.createElement('div');
-        inner.className = 'inner';
-
+        inner.className='inner';
+        const goal = document.createElement('div');
+        goal.className='success';
+        goal.innerHTML = `<b>この週の狙い：</b>${w.goal}`;
         const sch = document.createElement('div');
-        sch.className = 'schedule';
-        w.sessions.forEach(item => {
-          const div = document.createElement('div');
-          div.className = 'run';
-          div.innerHTML = `<div class="day">${item.day}</div><div class="desc">${item.desc}</div>`;
-          sch.appendChild(div);
-        });
-
-        const note = document.createElement('div');
-        note.className = 'card pad highlight';
-        note.style.marginTop = '12px';
-        note.innerHTML = `<h3 class="section-title" style="margin-bottom:6px">この週の狙い</h3><div class="meta">${w.goal}</div>`;
-
+        sch.className='schedule';
+        w.missions.forEach((m,mi)=> sch.appendChild(createRun(m,wi,mi)) );
+        const heat = document.createElement('div');
+        heat.className='heat';
+        heat.innerHTML = `<b>暑熱・雨の代替：</b>${w.heat}`;
+        inner.appendChild(goal);
         inner.appendChild(sch);
-        inner.appendChild(note);
-        details.appendChild(inner);
-        host.appendChild(details);
+        inner.appendChild(heat);
+        d.appendChild(inner);
+        host.appendChild(d);
       });
     }
 
-    function openAllDetails(){
-      document.querySelectorAll('details').forEach(el => el.open = true);
+    function updateProgress(){
+      const boxes = [...document.querySelectorAll('#weekList input[type="checkbox"]')];
+      const done = boxes.filter(b=>b.checked).length;
+      const pct = boxes.length ? Math.round(done / boxes.length * 100) : 0;
+      document.getElementById('progressText').textContent = `${pct}%（${done}/${boxes.length}）`;
+      document.getElementById('progressBar').style.width = `${pct}%`;
     }
 
-    const currentIndex = getCurrentWeek();
+    function openAll(){document.querySelectorAll('details').forEach(d=>d.open=true)}
+    function resetChecks(){
+      if(!confirm('この計画のチェックをリセットしますか？')) return;
+      weeks.forEach((w,wi)=> w.missions.forEach((m,mi)=> localStorage.removeItem(checkKey(wi,mi))));
+      renderWeekList(getCurrentIndex());
+      updateProgress();
+    }
+
+    const currentIndex = getCurrentIndex();
     renderCurrentWeek(currentIndex);
     renderWeekList(currentIndex);
-
-    document.getElementById('jumpWeeks').addEventListener('click', () => {
-      document.getElementById('weeks').scrollIntoView({behavior:'smooth'});
-    });
-
-    document.getElementById('openAll').addEventListener('click', openAllDetails);
+    updateProgress();
+    document.getElementById('jumpWeeks').addEventListener('click',()=>document.getElementById('weeks').scrollIntoView({behavior:'smooth'}));
+    document.getElementById('openAll').addEventListener('click',openAll);
+    document.getElementById('resetChecks').addEventListener('click',resetChecks);
   </script>
 </body>
 </html>
