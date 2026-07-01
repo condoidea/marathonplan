@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>W0–W8 夏のベース強化＆再始動計画 2026</title>
+  <title>夏のベース強化＆再始動計画 2026</title>
   <style>
     :root{
       --bg0:#06111f;
@@ -160,19 +160,14 @@
   <div class="wrap">
     <header class="hero">
       <div class="kicker"><span class="spark">⚡</span><span>SUMMER BASE BUILD 2026</span></div>
-      <h1>W0–W8 夏のベース強化＆再始動計画<br>7/5までをW0、8/30までギアを一段上げる</h1>
-      <p>暑さで無理に伸ばさない。ただし「週2で維持」から「週3を安定、余裕週は少し積む」へ。秋ハーフ1:35、冬フル3:42、上振れ3:35方向へつなぐ8週間。</p>
+      <h1>夏のベース強化＆再始動計画</h1>
+      <p>暑さで無理に伸ばさない。週3の再現性と週末ロングの安定を作る。</p>
       <div class="chips">
         <span class="chip">🎯 まず週3の再現性</span>
         <span class="chip">🔥 暑熱日は距離より負荷感</span>
         <span class="chip">🦵 補強 1〜2回/週</span>
         <span class="chip">💧 90分超は補給練習</span>
         <span class="chip">🚫 取り返し禁止</span>
-      </div>
-      <div class="hero-stats">
-        <div class="stat"><b>W0 + 8</b><span>8/30まで</span></div>
-        <div class="stat"><b>3 runs</b><span>標準ライン</span></div>
-        <div class="stat"><b>40km</b><span>8月後半の上振れ目安</span></div>
       </div>
     </header>
 
@@ -337,7 +332,7 @@
         code:'W4', dates:'7/27–8/2', type:'Step up', km:'32–38km目安',
         goal:'中間のギアアップ週。短いsteadyを入れても、週末ロングを壊さない範囲に留める。',
         missions:[
-          {label:'平日1', value:'50〜55分 E。余裕があれば最後に流し×4。'},
+          {label:'平日1', value:'45〜50分 E。余裕があれば最後に流し×4。'},
           {label:'平日2', value:'45分内で 5分steady×3（5\'45〜6\'00/km目安）／つなぎE。'},
           {label:'週末', value:'16〜18km E。後半上げは不要。', key:true},
           {label:'補強', value:'補強1回。ハム・臀部に張りを残さない強度。'}
@@ -402,16 +397,26 @@
     function safeId(text){return text.replace(/[^a-zA-Z0-9_-]/g,'_')}
     function checkKey(wi, mi){return `summer_plan_2026_${weeks[wi].code}_${mi}`}
 
+    function syncChecks(key, checked){
+      document.querySelectorAll(`input[data-check-key="${key}"]`).forEach(input => {
+        input.checked = checked;
+      });
+    }
+
     function createRun(item, wi, mi){
       const div = document.createElement('div');
       div.className = 'run' + (item.key ? ' key' : '');
       const key = checkKey(wi, mi);
       const stored = localStorage.getItem(key);
       const checked = stored === null ? !!item.done : stored === '1';
-      div.innerHTML = `<input class="check" type="checkbox" ${checked ? 'checked' : ''} aria-label="${item.label}">
+      div.innerHTML = `<input class="check" type="checkbox" data-check-key="${key}" ${checked ? 'checked' : ''} aria-label="${item.label}">
         <div><div class="day">${item.key ? '⭐ ' : ''}${item.label}</div><div class="desc">${item.value}</div></div>`;
       const cb = div.querySelector('input');
-      cb.addEventListener('change', () => { localStorage.setItem(key, cb.checked ? '1' : '0'); updateProgress(); });
+      cb.addEventListener('change', () => {
+        localStorage.setItem(key, cb.checked ? '1' : '0');
+        syncChecks(key, cb.checked);
+        updateProgress();
+      });
       return div;
     }
 
@@ -423,10 +428,7 @@
       const host = document.getElementById('currentMissions');
       host.innerHTML = '';
       w.missions.forEach((m,i)=>{
-        const c = document.createElement('div');
-        c.className = 'mission-card';
-        c.innerHTML = `<div class="label">${m.label}</div><div class="value">${m.value}</div>`;
-        host.appendChild(c);
+        host.appendChild(createRun(m, index, i));
       });
     }
 
