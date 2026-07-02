@@ -367,9 +367,8 @@
       gap:4px;
     }
     .medal.active{filter:none;opacity:1;background:#fff7ed;border-color:#fed7aa;box-shadow:0 8px 18px rgba(245,158,11,.16)}
-    @media (prefers-reduced-motion: reduce){
-      .cloudLayer,.groundFlow,.road::before,.trail::after,.water::after,.tree::before,.reed,.scene .sun,.stage-5 .flag,.runner-sparkle.show,.skyFx .fly,.balloonBob,.bird::before,.bird::after,.stars i{animation:none !important}
-    }
+    /* 演出はこのページの主目的なのでOSのreduced-motion設定より優先する。止めたい場合はURLに ?motion=off */
+    body.motion-off .cloudLayer,body.motion-off .groundFlow,body.motion-off .road::before,body.motion-off .trail::after,body.motion-off .water::after,body.motion-off .tree::before,body.motion-off .reed,body.motion-off .scene .sun,body.motion-off .stage-5 .flag,body.motion-off .runner-sparkle.show,body.motion-off .skyFx .fly,body.motion-off .balloonBob,body.motion-off .bird::before,body.motion-off .bird::after,body.motion-off .stars i{animation:none !important}
     @media (max-width:640px){
       .wrap{padding:12px 0 64px}
       .hero{padding:18px 16px 14px; border-radius:24px}
@@ -944,8 +943,9 @@
     }
 
     /* --- ランナー ゲイトエンジン（SVG骨格を毎フレーム関節角度で駆動） --- */
-    /* ?motion=force はOS設定に関わらず動きを確認するためのデバッグ用 */
-    const reduceMotion = /[?&]motion=force/.test(location.search) ? false : window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    /* 演出優先：OSのreduced-motion設定は無視する。?motion=off で全アニメーション停止 */
+    const reduceMotion = /[?&]motion=off/.test(location.search);
+    if(reduceMotion) document.body.classList.add('motion-off');
     let prevStageIdx = null;
     let sceneTimeClass = '';
     let progressInitialized = false;
@@ -1012,9 +1012,8 @@
         gaitRunning = false;
       }
     }
-    if(reduceMotion){
-      gaitFrame(.02);
-    }else{
+    gaitFrame(.02);
+    if(!reduceMotion){
       new IntersectionObserver(entries => {
         entries.forEach(e => { sceneInView = e.isIntersecting; });
         gaitSync();
