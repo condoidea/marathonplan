@@ -3,162 +3,192 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050a14">
   <title>夏の頻度優先ブリッジ計画 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800;900&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg0:#06111f;
-      --bg1:#0a1f38;
-      --card:#ffffff;
-      --text:#162033;
-      --muted:#667085;
-      --line:#e6ebf2;
-      --blue:#2563eb;
-      --cyan:#06b6d4;
-      --green:#10b981;
-      --amber:#f59e0b;
-      --rose:#f43f5e;
-      --violet:#7c3aed;
-      --soft-blue:#eef5ff;
-      --soft-green:#ecfdf5;
-      --soft-amber:#fff7ed;
-      --soft-rose:#fff1f2;
-      --shadow:0 18px 45px rgba(9, 25, 52, .14);
-      --radius:22px;
+      --void:#050a14;
+      --text:#e8eefc;
+      --text-dim:#9aabc8;
+      --muted:#7d90b0;
+      --cyan:#2cf0ff;
+      --blue:#3b82ff;
+      --violet:#a78bfa;
+      --lime:#5dffb0;
+      --amber:#ffc14a;
+      --rose:#ff5d8f;
+      --shadow:0 18px 40px rgba(0,0,0,.35);
+      --shadow-neon:0 0 0 1px rgba(44,240,255,.18), 0 0 28px rgba(44,240,255,.12), 0 18px 40px rgba(0,0,0,.4);
+      --radius:20px;
+      --safe-b:env(safe-area-inset-bottom, 0px);
+      --safe-t:env(safe-area-inset-top, 0px);
+      --font-display:"Exo 2", "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-num:"Outfit", "Exo 2", -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", "Noto Sans JP", "Yu Gothic UI", sans-serif;
     }
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+    html{scroll-behavior:smooth; -webkit-text-size-adjust:100%}
     body{
       margin:0;
       color:var(--text);
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Sans","Noto Sans JP",sans-serif;
-      line-height:1.65;
-      background:
-        radial-gradient(circle at top left, rgba(37,99,235,.30), transparent 36rem),
-        radial-gradient(circle at 85% 2%, rgba(16,185,129,.24), transparent 28rem),
-        linear-gradient(180deg,#f8fbff 0%,#eef4fb 42%,#f8fafc 100%);
+      font-family:var(--font-body);
+      line-height:1.55;
+      background:var(--void);
+      min-height:100dvh;
+      overflow-x:hidden;
     }
-    .wrap{width:min(1060px, 100% - 24px); margin:0 auto; padding:16px 0 96px}
-    .hero{
+    body::before{
+      content:"";
+      position:fixed; inset:0; pointer-events:none; z-index:0;
+      background:
+        radial-gradient(90% 55% at 8% -8%, rgba(44,240,255,.22), transparent 50%),
+        radial-gradient(70% 50% at 100% 0%, rgba(167,139,250,.20), transparent 46%),
+        radial-gradient(60% 45% at 70% 100%, rgba(93,255,176,.10), transparent 50%),
+        radial-gradient(40% 30% at 40% 60%, rgba(59,130,255,.08), transparent 60%),
+        linear-gradient(180deg, #060d1a 0%, #050a14 45%, #070f1c 100%);
+    }
+    body::after{
+      content:"";
+      position:fixed; inset:0; pointer-events:none; z-index:0;
+      opacity:.45;
+      background-image:
+        linear-gradient(rgba(90,140,220,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(90,140,220,.045) 1px, transparent 1px);
+      background-size:28px 28px;
+      mask-image:radial-gradient(ellipse 80% 70% at 50% 20%, #000 20%, transparent 75%);
+      -webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 20%, #000 20%, transparent 75%);
+    }
+    .wrap{
+      position:relative; z-index:1;
+      width:min(720px, 100% - 20px);
+      margin:0 auto;
+      padding:calc(10px + var(--safe-t)) 0 calc(28px + var(--safe-b));
+    }
+
+    .topbar{
+      position:sticky; top:0; z-index:40;
+      margin:0 -2px 10px;
+      padding:8px 2px 10px;
+      background:linear-gradient(180deg, rgba(5,10,20,.92) 50%, rgba(5,10,20,.55) 85%, transparent);
+      backdrop-filter:blur(14px) saturate(1.3);
+      -webkit-backdrop-filter:blur(14px) saturate(1.3);
+    }
+    .topbar-inner{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:10px;
+      align-items:center;
+      padding:12px 13px;
+      border-radius:20px;
+      color:#fff;
+      background:linear-gradient(135deg, rgba(12,24,48,.95) 0%, rgba(14,36,70,.92) 45%, rgba(10,50,60,.9) 100%);
+      border:1px solid rgba(44,240,255,.22);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.03) inset,
+        0 0 40px rgba(44,240,255,.10),
+        0 16px 36px rgba(0,0,0,.45);
       position:relative;
       overflow:hidden;
-      border-radius:30px;
-      padding:22px 18px 18px;
-      color:#fff;
-      background:
-        linear-gradient(135deg,rgba(12,38,78,.98),rgba(18,87,125,.92) 47%,rgba(18,120,90,.92)),
-        radial-gradient(circle at 88% 18%,rgba(255,255,255,.28),transparent 11rem);
-      box-shadow:0 24px 60px rgba(6,32,72,.25);
-      margin-top:10px;
-      isolation:isolate;
     }
-    .hero::before{
+    .topbar-inner::before{
       content:"";
-      position:absolute; inset:-80px -120px auto auto;
-      width:260px; height:260px;
-      background:radial-gradient(circle,rgba(255,255,255,.28),transparent 60%);
-      transform:rotate(25deg);
-      z-index:-1;
+      position:absolute; inset:0;
+      background:
+        linear-gradient(115deg, transparent 0 40%, rgba(44,240,255,.08) 48%, transparent 56%),
+        repeating-linear-gradient(-18deg, transparent 0 12px, rgba(255,255,255,.015) 12px 13px);
+      pointer-events:none;
+      animation:topScan 5.5s ease-in-out infinite;
     }
-    h1{margin:0; font-size:1.55rem; line-height:1.25; letter-spacing:.01em}
-    .hero p{margin:10px 0 0; color:rgba(255,255,255,.88); font-size:.96rem}
-    .chips,.mini{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px}
-    .chip,.mini span{
-      display:inline-flex; align-items:center; gap:6px;
-      border-radius:999px;
-      padding:7px 11px;
-      font-size:.82rem;
-      font-weight:700;
+    @keyframes topScan{
+      0%,100%{opacity:.55; transform:translateX(-4%)}
+      50%{opacity:1; transform:translateX(4%)}
     }
-    .chip{background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.20); color:#fff; backdrop-filter:blur(6px)}
-    .hero-stats{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:16px}
-    .stat{border:1px solid rgba(255,255,255,.17); background:rgba(255,255,255,.12); border-radius:18px; padding:10px 8px; backdrop-filter:blur(8px)}
-    .stat b{display:block; font-size:1.05rem; line-height:1.2}
-    .stat span{display:block; color:rgba(255,255,255,.78); font-size:.74rem; margin-top:2px}
-    .quicknav{position:sticky; top:0; z-index:30; margin-top:12px; padding:10px 0 8px; background:rgba(248,251,255,.82); backdrop-filter:blur(14px)}
-    .quicknav-row{display:flex; gap:8px; overflow:auto; padding:2px 1px 4px; scrollbar-width:none}
-    .quicknav-row::-webkit-scrollbar{display:none}
-    .qbtn,button{
-      white-space:nowrap; text-decoration:none; color:var(--text); background:#fff; border:1px solid var(--line); border-radius:999px; padding:10px 14px; font-size:.9rem; font-weight:800; box-shadow:0 10px 26px rgba(17,37,78,.08)
+    .topbar-inner::after{
+      content:"";
+      position:absolute; right:-24px; top:-36px;
+      width:140px; height:140px; border-radius:50%;
+      background:radial-gradient(circle, rgba(44,240,255,.35), transparent 68%);
+      pointer-events:none; filter:blur(2px);
     }
-    button{cursor:pointer; appearance:none}
-    button.primary,.qbtn.primary{background:linear-gradient(135deg,var(--blue),var(--cyan)); color:#fff; border-color:transparent}
-    .grid{display:grid; gap:14px; margin-top:14px}
-    .main{grid-template-columns:1fr}
-    .card{background:rgba(255,255,255,.95); border:1px solid rgba(230,235,242,.9); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden}
-    .pad{padding:16px}
-    .section-title{margin:0 0 10px; font-size:1.08rem; letter-spacing:.01em}
-    .meta{color:var(--muted); font-size:.93rem}
-    .week-hero{background:linear-gradient(180deg,#ffffff 0%,#f8fbff 100%)}
-    .week-head{display:flex; justify-content:space-between; gap:12px; align-items:flex-start; margin-bottom:12px}
-    .week-title{font-weight:900; font-size:1.15rem; line-height:1.3}
-    .date{color:var(--muted); font-size:.9rem; margin-top:3px}
-    .pill{display:inline-flex; align-items:center; gap:5px; border-radius:999px; padding:5px 10px; font-size:.76rem; font-weight:900; background:var(--soft-blue); color:var(--blue); border:1px solid #cfe0ff}
-    .pill.green{background:var(--soft-green); color:#047857; border-color:#bbf7d0}
-    .pill.amber{background:var(--soft-amber); color:#b45309; border-color:#fed7aa}
-    .pill.rose{background:var(--soft-rose); color:#be123c; border-color:#fecdd3}
-    .mission{display:grid; gap:10px; margin-top:12px}
-    .mission-card{border:1px solid var(--line); background:#fbfdff; border-radius:18px; padding:12px}
-    .mission-card .label{font-size:.78rem; color:var(--muted); font-weight:900; letter-spacing:.03em; text-transform:uppercase}
-    .mission-card .value{font-weight:900; margin-top:2px}
-    .progressBox{margin-top:14px; border:1px solid #dbeafe; background:linear-gradient(180deg,#f8fbff,#eef6ff); border-radius:18px; padding:12px}
-    .progressTop{display:flex; justify-content:space-between; gap:8px; align-items:center; font-size:.86rem; font-weight:900}
-    .bar{height:11px; background:#dbeafe; border-radius:999px; overflow:hidden; margin-top:8px}
-    .bar span{display:block; height:100%; width:0%; background:linear-gradient(90deg,var(--green),var(--cyan),var(--blue)); border-radius:inherit; transition:width .35s ease}
-    .schedule{display:grid; gap:10px}
-    .run{position:relative; display:grid; grid-template-columns:auto 1fr; gap:10px; align-items:flex-start; border:1px solid var(--line); border-radius:18px; padding:10px 12px; background:#fbfcfe}
-    .run.key{border-color:#bfdbfe; background:linear-gradient(180deg,#f8fbff,#eef6ff)}
-    .run .check{width:26px; height:26px; margin-top:2px; accent-color:var(--blue)}
-    .run .day{font-weight:900; font-size:.92rem; display:flex; align-items:center; gap:6px; flex-wrap:wrap}
-    .runBody{min-width:0}
-    .run .daymain{font-weight:700; margin-left:6px}
-    .run .noteBtn{border:none; background:none; box-shadow:none; border-radius:0; color:var(--muted); font-size:.78rem; font-weight:800; padding:2px 0; cursor:pointer; text-decoration:underline dotted}
-    .run .noteText{color:var(--muted); font-size:.85rem; margin-top:2px}
-    .tagline{color:var(--muted); font-size:.85rem; margin-top:4px}
-    .heat{border-left:4px solid var(--amber); padding-left:10px; color:#7a4b0e; background:#fffaf0; border-radius:12px; padding-top:8px; padding-bottom:8px; margin-top:10px; font-size:.9rem}
-    details{border-top:1px solid var(--line)}
-    details:first-child{border-top:none}
-    details summary{list-style:none; cursor:pointer; padding:15px 16px; font-weight:900; display:flex; justify-content:space-between; gap:16px; align-items:center}
-    details summary::-webkit-details-marker{display:none}
-    details summary .right{color:var(--muted); font-size:.84rem; font-weight:800; text-align:right}
-    details .inner{padding:0 16px 16px}
-    details.current{background:linear-gradient(180deg,#f8fbff,#fff)}
-    details.current summary{border-left:5px solid var(--blue); padding-left:11px}
-    .week-list{display:grid; gap:0}
-    .week-card-title{display:flex; gap:8px; flex-wrap:wrap; align-items:center}
-    .note{border:1px solid #f5dfb3; background:#fff9ed; color:#744210; border-radius:16px; padding:12px; font-size:.93rem; margin:12px 0}
-    .success{border:1px solid #bbf7d0; background:#f0fdf4; color:#065f46; border-radius:16px; padding:12px; font-size:.92rem; margin-top:12px}
-    .warn{border:1px solid #fecdd3; background:#fff1f2; color:#9f1239; border-radius:16px; padding:12px; font-size:.92rem; margin-top:12px}
-    .roadmap{display:grid; gap:10px}
-    .phase{border:1px solid var(--line); background:#fbfcfe; border-radius:18px; padding:14px}
-    .phase h3{margin:0 0 6px; font-size:1rem}
-    .phase p{margin:0; color:var(--muted); font-size:.92rem}
-    .mini span{background:#fff; border:1px solid var(--line); color:#344054}
-    .togglebar{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px}
-    .scoreboard{display:grid; grid-template-columns:repeat(2,1fr); gap:10px}
-    .score{border-radius:18px; border:1px solid var(--line); background:#fff; padding:12px}
-    .score b{display:block; font-size:1.05rem}
-    .score span{display:block; color:var(--muted); font-size:.82rem; margin-top:2px}
-    .timeline{display:grid; gap:8px; margin-top:12px}
-    .lane{position:relative; display:grid; grid-template-columns:56px 1fr; gap:10px; align-items:center}
-    .badge{width:48px; height:48px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-weight:950; color:#fff; background:linear-gradient(135deg,var(--blue),var(--cyan)); box-shadow:0 12px 25px rgba(37,99,235,.22)}
-    .laneText{border:1px solid var(--line); background:#fff; border-radius:16px; padding:10px 12px}
-    .laneText b{display:block; font-size:.94rem}
-    .laneText span{display:block; color:var(--muted); font-size:.84rem}
-    .foot{color:var(--muted); font-size:.84rem; text-align:center; margin-top:16px}
+    .top-brand{
+      display:flex; flex-direction:column; gap:2px; min-width:0; position:relative; z-index:1;
+    }
+    .top-kicker{
+      font-family:var(--font-display);
+      font-size:.66rem; font-weight:700; letter-spacing:.16em;
+      text-transform:uppercase; color:var(--cyan);
+      text-shadow:0 0 12px rgba(44,240,255,.45);
+    }
+    .top-title{
+      font-family:var(--font-display);
+      font-size:1.12rem; font-weight:800; line-height:1.12;
+      letter-spacing:.02em;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+      background:linear-gradient(90deg, #fff 20%, #9ef8ff 100%);
+      -webkit-background-clip:text; background-clip:text;
+      color:transparent;
+      -webkit-text-fill-color:transparent;
+    }
+    .top-sub{
+      font-size:.76rem; color:rgba(200,220,255,.72);
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+      font-family:var(--font-num);
+      letter-spacing:.02em;
+    }
+    .ring-wrap{
+      position:relative; z-index:1;
+      width:58px; height:58px; flex:0 0 auto;
+      filter:drop-shadow(0 0 10px rgba(44,240,255,.35));
+    }
+    .ring-wrap svg{width:100%; height:100%; transform:rotate(-90deg)}
+    .ring-wrap .track{stroke:rgba(255,255,255,.12); fill:none; stroke-width:5.5}
+    .ring-wrap .prog{
+      stroke:url(#ringGrad); fill:none; stroke-width:5.5;
+      stroke-linecap:round;
+      stroke-dasharray:138.2;
+      stroke-dashoffset:138.2;
+      transition:stroke-dashoffset .55s cubic-bezier(.22,.8,.28,1);
+      filter:drop-shadow(0 0 4px rgba(44,240,255,.8));
+    }
+    .ring-center{
+      position:absolute; inset:0;
+      display:grid; place-items:center;
+      font-family:var(--font-display);
+      font-weight:800; font-size:.8rem; line-height:1;
+      color:#fff;
+      text-shadow:0 0 10px rgba(44,240,255,.5);
+    }
 
-    /* --- Motivation widgets v6: scenery overlay + in-place runner with one-way elbow/knee bends --- */
-    .journeyTop{margin-top:12px; padding:12px; position:relative; overflow:hidden}
-    .journeyBox{border-color:#c7d2fe; background:linear-gradient(180deg,#f8fbff,#f0f9ff)}
+    .journeyTop{
+      margin:0 0 10px; padding:10px;
+      border-radius:22px;
+      border:1px solid rgba(44,240,255,.16);
+      background:linear-gradient(180deg, rgba(16,28,50,.88), rgba(10,18,34,.92));
+      box-shadow:var(--shadow-neon);
+      position:relative;
+      overflow:hidden;
+    }
+    .journeyTop::before{
+      content:"";
+      position:absolute; inset:0;
+      border-radius:inherit;
+      pointer-events:none;
+      box-shadow:inset 0 0 0 1px rgba(44,240,255,.12);
+      background:linear-gradient(135deg, rgba(44,240,255,.07), transparent 40%, transparent 60%, rgba(167,139,250,.07));
+    }
     .scene{
       position:relative;
-      height:168px;
+      height:122px;
       overflow:hidden;
-      border-radius:20px;
-      border:1px solid #dbeafe;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.08);
       background:linear-gradient(180deg,#bfdbfe 0%,#e0f2fe 56%,#dcfce7 57%,#bbf7d0 100%);
-      transition:background .45s ease;
+      transition:background .45s ease, box-shadow .35s ease;
       isolation:isolate;
-      box-shadow:inset 0 -20px 35px rgba(15,23,42,.06);
+      box-shadow:inset 0 -16px 28px rgba(15,23,42,.08), 0 0 24px rgba(44,240,255,.08);
     }
     .scene.stage-0{background:linear-gradient(180deg,#c7d2fe 0%,#e0f2fe 56%,#e2e8f0 57%,#cbd5e1 100%)}
     .scene.stage-1{background:linear-gradient(180deg,#bae6fd 0%,#e0f2fe 58%,#dcfce7 59%,#86efac 100%)}
@@ -166,157 +196,133 @@
     .scene.stage-3{background:linear-gradient(180deg,#bfdbfe 0%,#e0f2fe 58%,#d9f99d 59%,#86efac 100%)}
     .scene.stage-4,.scene.stage-5{background:linear-gradient(180deg,#bae6fd 0%,#e0f2fe 54%,#7dd3fc 55%,#38bdf8 100%)}
     .scene .sun{
-      position:absolute; right:22px; top:16px;
-      width:34px; height:34px;
-      border-radius:50%;
+      position:absolute; right:18px; top:12px;
+      width:28px; height:28px; border-radius:50%;
       background:#fde68a;
-      box-shadow:0 0 28px rgba(253,230,138,.75);
+      box-shadow:0 0 22px rgba(253,230,138,.75);
+      animation:sunPulse 5s ease-in-out infinite alternate;
     }
-    .scene .sun{animation:sunPulse 5s ease-in-out infinite alternate}
-    @keyframes sunPulse{from{box-shadow:0 0 20px rgba(253,230,138,.55)}to{box-shadow:0 0 34px rgba(253,230,138,.95)}}
+    @keyframes sunPulse{from{box-shadow:0 0 16px rgba(253,230,138,.5)}to{box-shadow:0 0 28px rgba(253,230,138,.95)}}
     .skyTint{position:absolute; inset:0; z-index:3; pointer-events:none; opacity:0; transition:opacity 1.2s ease}
     .scene.t-morning .skyTint{opacity:1; background:linear-gradient(180deg, rgba(255,170,190,.26), transparent 55%)}
     .scene.t-dusk .skyTint{opacity:1; background:linear-gradient(180deg, rgba(251,146,60,.34), rgba(244,63,94,.16) 55%, transparent 78%)}
     .scene.t-night .skyTint{opacity:1; background:linear-gradient(180deg, rgba(2,6,23,.52), rgba(15,23,42,.30) 65%, rgba(15,23,42,.12))}
-    .scene.t-night .sun{background:#e2e8f0; box-shadow:0 0 16px rgba(226,232,240,.8); animation:none}
+    .scene.t-night .sun{background:#e2e8f0; box-shadow:0 0 14px rgba(226,232,240,.8); animation:none}
     .stars{display:none}
     .scene.t-night .stars{display:block}
     .stars i{position:absolute; width:3px; height:3px; border-radius:50%; background:#fff; z-index:4; animation:twinkle 2.6s ease-in-out infinite}
-    .stars i:nth-child(1){left:14%; top:14px}
-    .stars i:nth-child(2){left:38%; top:26px; animation-delay:-.9s}
-    .stars i:nth-child(3){left:58%; top:12px; animation-delay:-1.7s}
-    .stars i:nth-child(4){left:80%; top:30px; animation-delay:-.4s}
+    .stars i:nth-child(1){left:14%; top:12px}
+    .stars i:nth-child(2){left:38%; top:22px; animation-delay:-.9s}
+    .stars i:nth-child(3){left:58%; top:10px; animation-delay:-1.7s}
+    .stars i:nth-child(4){left:80%; top:24px; animation-delay:-.4s}
     @keyframes twinkle{0%,100%{opacity:.25}50%{opacity:1}}
     .skyFx{position:absolute; inset:0; z-index:1; pointer-events:none}
     .skyFx .fly{position:absolute; animation:flyLTR linear forwards}
     .skyFx .fly.rtl{animation-name:flyRTL}
     @keyframes flyLTR{from{left:-50px}to{left:100%}}
     @keyframes flyRTL{from{left:100%}to{left:-50px}}
-    .balloonBob{position:relative; width:26px; height:40px; animation:balloonBob 3.4s ease-in-out infinite alternate}
-    @keyframes balloonBob{from{transform:translateY(0)}to{transform:translateY(-7px)}}
-    .balloonEnv{position:absolute; left:0; top:0; width:26px; height:27px; border-radius:50% 50% 46% 46%; background:repeating-linear-gradient(90deg,#f43f5e 0 5px,#fbbf24 5px 10px,#38bdf8 10px 15px)}
-    .balloonEnv::after{content:""; position:absolute; left:8px; bottom:-8px; width:10px; height:9px; background:rgba(15,23,42,.28); clip-path:polygon(20% 0,80% 0,100% 100%,0 100%)}
-    .balloonBasket{position:absolute; left:9px; bottom:2px; width:8px; height:6px; border-radius:2px; background:#92400e}
-    .bird{position:absolute; width:13px; height:7px}
-    .bird::before,.bird::after{content:""; position:absolute; top:3px; width:7px; height:2px; border-radius:999px; background:#334155}
+    .balloonBob{position:relative; width:22px; height:34px; animation:balloonBob 3.4s ease-in-out infinite alternate}
+    @keyframes balloonBob{from{transform:translateY(0)}to{transform:translateY(-6px)}}
+    .balloonEnv{position:absolute; left:0; top:0; width:22px; height:23px; border-radius:50% 50% 46% 46%; background:repeating-linear-gradient(90deg,#f43f5e 0 4px,#fbbf24 4px 8px,#38bdf8 8px 12px)}
+    .balloonEnv::after{content:""; position:absolute; left:7px; bottom:-7px; width:8px; height:8px; background:rgba(15,23,42,.28); clip-path:polygon(20% 0,80% 0,100% 100%,0 100%)}
+    .balloonBasket{position:absolute; left:8px; bottom:2px; width:6px; height:5px; border-radius:2px; background:#92400e}
+    .bird{position:absolute; width:12px; height:6px}
+    .bird::before,.bird::after{content:""; position:absolute; top:2px; width:6px; height:2px; border-radius:999px; background:#334155}
     .bird::before{left:0; transform-origin:right center; animation:flapL .5s ease-in-out infinite alternate}
-    .bird::after{left:6px; transform-origin:left center; animation:flapR .5s ease-in-out infinite alternate}
+    .bird::after{left:5px; transform-origin:left center; animation:flapR .5s ease-in-out infinite alternate}
     @keyframes flapL{from{transform:rotate(26deg)}to{transform:rotate(-8deg)}}
     @keyframes flapR{from{transform:rotate(-26deg)}to{transform:rotate(8deg)}}
-    .shootStar{position:absolute; z-index:4; width:54px; height:2px; border-radius:999px; background:linear-gradient(90deg,#fff,transparent); opacity:0; animation:shoot .9s ease-out forwards}
-    @keyframes shoot{0%{opacity:0; transform:translate(0,0) rotate(18deg)}12%{opacity:1}100%{opacity:0; transform:translate(-120px,42px) rotate(18deg)}}
-    .rainbow{position:absolute; z-index:0; pointer-events:none; width:130px; height:65px; border-radius:130px 130px 0 0; background:radial-gradient(circle at 50% 100%, transparent 0 33px, rgba(167,139,250,.4) 33px 38px, rgba(56,189,248,.4) 38px 43px, rgba(74,222,128,.4) 43px 48px, rgba(251,191,36,.4) 48px 53px, rgba(244,63,94,.4) 53px 58px, transparent 58px); opacity:0; animation:rainbowFade 9s ease forwards}
+    .shootStar{position:absolute; z-index:4; width:48px; height:2px; border-radius:999px; background:linear-gradient(90deg,#fff,transparent); opacity:0; animation:shoot .9s ease-out forwards}
+    @keyframes shoot{0%{opacity:0; transform:translate(0,0) rotate(18deg)}12%{opacity:1}100%{opacity:0; transform:translate(-100px,36px) rotate(18deg)}}
+    .rainbow{position:absolute; z-index:0; pointer-events:none; width:110px; height:55px; border-radius:110px 110px 0 0; background:radial-gradient(circle at 50% 100%, transparent 0 28px, rgba(167,139,250,.4) 28px 32px, rgba(56,189,248,.4) 32px 36px, rgba(74,222,128,.4) 36px 40px, rgba(251,191,36,.4) 40px 44px, rgba(244,63,94,.4) 44px 48px, transparent 48px); opacity:0; animation:rainbowFade 9s ease forwards}
     @keyframes rainbowFade{0%{opacity:0}20%{opacity:.9}75%{opacity:.9}100%{opacity:0}}
-    .cloudLayer{position:absolute; left:0; top:0; width:200%; height:68px; z-index:1; pointer-events:none; animation:cloudDrift 70s linear infinite}
+    .cloudLayer{position:absolute; left:0; top:0; width:200%; height:52px; z-index:1; pointer-events:none; animation:cloudDrift 70s linear infinite}
     .cloudSet{position:absolute; top:0; left:0; width:50%; height:100%}
     .cloudSet.dup{left:50%}
-    .cloud{position:absolute; top:20px; left:6%; width:52px; height:18px; border-radius:999px; background:rgba(255,255,255,.82); opacity:.9}
-    .cloud::before,.cloud::after{content:""; position:absolute; bottom:5px; border-radius:50%; background:inherit}
-    .cloud::before{left:8px; width:20px; height:20px}
-    .cloud::after{left:25px; width:24px; height:24px}
-    .cloud.two{left:58%; top:38px; transform:scale(.75); opacity:.72}
+    .cloud{position:absolute; top:14px; left:6%; width:44px; height:15px; border-radius:999px; background:rgba(255,255,255,.82); opacity:.9}
+    .cloud::before,.cloud::after{content:""; position:absolute; bottom:4px; border-radius:50%; background:inherit}
+    .cloud::before{left:7px; width:16px; height:16px}
+    .cloud::after{left:20px; width:20px; height:20px}
+    .cloud.two{left:58%; top:30px; transform:scale(.75); opacity:.72}
     @keyframes cloudDrift{from{transform:translateX(-50%)}to{transform:translateX(0)}}
     .scene-layer{position:absolute; inset:0; opacity:0; transition:opacity .45s ease, transform .45s ease; transform:translateY(6px)}
     .stage-0 .city,.stage-1 .park,.stage-2 .forest,.stage-3 .mountain,.stage-4 .lake,.stage-5 .lake{opacity:1; transform:translateY(0)}
-    .building{position:absolute; bottom:34px; width:24px; background:#475569; border-radius:3px 3px 0 0; box-shadow:inset 0 0 0 999px rgba(255,255,255,.02)}
-    .building::before{content:""; position:absolute; inset:7px 5px; background:repeating-linear-gradient(180deg,#fef3c7 0 4px, transparent 4px 9px)}
-    .b1{left:16px;height:48px}.b2{left:48px;height:64px}.b3{left:86px;height:42px}.b4{right:116px;height:54px}.b5{right:88px;height:38px}
-    .road{position:absolute; left:0; right:0; bottom:0; height:34px; background:#64748b}
-    .road::before{content:""; position:absolute; left:0; right:0; top:14px; height:3px; background:repeating-linear-gradient(90deg,#f8fafc 0 22px, transparent 22px 42px); animation:groundShift42 var(--gndDur,1.2s) linear infinite; animation-play-state:var(--gndPlay,paused)}
-    .tree{position:absolute; bottom:28px; width:16px; height:38px; background:#7c4a1e; border-radius:999px}
-    .tree::before{content:""; position:absolute; left:-18px; top:-28px; width:52px; height:52px; border-radius:50%; background:#16a34a; box-shadow:12px 14px 0 #22c55e, -10px 16px 0 #15803d; transform-origin:50% 85%; animation:canopySway 4.2s ease-in-out infinite alternate}
-    .t1{left:24px}.t2{left:78px; transform:scale(.85)}.t3{left:135px}.t4{right:120px; transform:scale(.9)}.t5{right:78px}
+    .building{position:absolute; bottom:28px; width:20px; background:#475569; border-radius:3px 3px 0 0}
+    .building::before{content:""; position:absolute; inset:6px 4px; background:repeating-linear-gradient(180deg,#fef3c7 0 3px, transparent 3px 7px)}
+    .b1{left:14px;height:40px}.b2{left:40px;height:54px}.b3{left:70px;height:36px}.b4{right:100px;height:46px}.b5{right:76px;height:32px}
+    .road{position:absolute; left:0; right:0; bottom:0; height:28px; background:#64748b}
+    .road::before{content:""; position:absolute; left:0; right:0; top:12px; height:2px; background:repeating-linear-gradient(90deg,#f8fafc 0 18px, transparent 18px 34px); animation:groundShift42 var(--gndDur,1.2s) linear infinite; animation-play-state:var(--gndPlay,paused)}
+    .tree{position:absolute; bottom:24px; width:14px; height:32px; background:#7c4a1e; border-radius:999px}
+    .tree::before{content:""; position:absolute; left:-15px; top:-24px; width:44px; height:44px; border-radius:50%; background:#16a34a; box-shadow:10px 12px 0 #22c55e, -8px 14px 0 #15803d; transform-origin:50% 85%; animation:canopySway 4.2s ease-in-out infinite alternate}
+    .t1{left:20px}.t2{left:68px; transform:scale(.85)}.t3{left:118px}.t4{right:104px; transform:scale(.9)}.t5{right:68px}
     .t2::before{animation-delay:-1.4s}.t3::before{animation-delay:-2.6s}.t4::before{animation-delay:-.8s}.t5::before{animation-delay:-3.3s}
     @keyframes canopySway{from{transform:rotate(-1.6deg)}to{transform:rotate(2deg)}}
-    .trail{position:absolute; left:-12px; right:-12px; bottom:12px; height:22px; border-radius:999px 999px 0 0; background:#facc15; transform:rotate(-2deg); opacity:.85}
+    .trail{position:absolute; left:-12px; right:-12px; bottom:10px; height:18px; border-radius:999px 999px 0 0; background:#facc15; transform:rotate(-2deg); opacity:.85}
     .trail::after{content:""; position:absolute; inset:0; border-radius:inherit; background:repeating-linear-gradient(90deg, rgba(255,255,255,.4) 0 10px, transparent 10px 42px); animation:groundShift42 var(--gndDur,1.2s) linear infinite; animation-play-state:var(--gndPlay,paused)}
     @keyframes groundShift42{to{background-position-x:42px}}
-    .mount{position:absolute; bottom:29px; width:0; height:0; border-left:72px solid transparent; border-right:72px solid transparent; border-bottom:84px solid #64748b; filter:drop-shadow(0 8px 4px rgba(15,23,42,.12))}
-    .mount::before{content:""; position:absolute; left:-22px; top:18px; width:0; height:0; border-left:22px solid transparent; border-right:22px solid transparent; border-bottom:26px solid #f8fafc}
-    .m1{left:20px}.m2{right:78px; transform:scale(.78); bottom:31px; border-bottom-color:#94a3b8}
-    .ridge{position:absolute; left:0; right:0; bottom:0; height:36px; background:#22c55e; border-radius:55% 45% 0 0 / 100% 100% 0 0}
-    .water{position:absolute; left:0; right:0; bottom:0; height:52px; background:repeating-linear-gradient(180deg,#38bdf8 0 7px,#7dd3fc 7px 14px)}
-    .water::after{content:""; position:absolute; inset:0; background:repeating-linear-gradient(90deg, rgba(255,255,255,.30) 0 14px, transparent 14px 52px); opacity:.6; animation:waterShift 3.6s linear infinite}
+    .mount{position:absolute; bottom:24px; width:0; height:0; border-left:60px solid transparent; border-right:60px solid transparent; border-bottom:70px solid #64748b; filter:drop-shadow(0 6px 3px rgba(15,23,42,.12))}
+    .mount::before{content:""; position:absolute; left:-18px; top:14px; width:0; height:0; border-left:18px solid transparent; border-right:18px solid transparent; border-bottom:22px solid #f8fafc}
+    .m1{left:16px}.m2{right:68px; transform:scale(.78); bottom:26px; border-bottom-color:#94a3b8}
+    .ridge{position:absolute; left:0; right:0; bottom:0; height:30px; background:#22c55e; border-radius:55% 45% 0 0 / 100% 100% 0 0}
+    .water{position:absolute; left:0; right:0; bottom:0; height:44px; background:repeating-linear-gradient(180deg,#38bdf8 0 6px,#7dd3fc 6px 12px)}
+    .water::after{content:""; position:absolute; inset:0; background:repeating-linear-gradient(90deg, rgba(255,255,255,.30) 0 12px, transparent 12px 44px); opacity:.6; animation:waterShift 3.6s linear infinite}
     @keyframes waterShift{to{background-position-x:-52px}}
-    .shore{position:absolute; left:0; right:0; bottom:48px; height:18px; background:#facc15; border-radius:50% 50% 0 0 / 100% 100% 0 0}
-    .reed{position:absolute; bottom:43px; width:5px; height:28px; background:#166534; border-radius:999px; transform-origin:bottom; transform:rotate(var(--rrot,0deg)); animation:reedSway 3.4s ease-in-out infinite alternate}
-    .r1{left:22px; --rrot:-12deg}.r2{left:31px; --rrot:8deg; animation-delay:-1.1s}.r3{right:114px; --rrot:-8deg; animation-delay:-2.2s}.r4{right:104px; --rrot:10deg; animation-delay:-.6s}
+    .shore{position:absolute; left:0; right:0; bottom:40px; height:15px; background:#facc15; border-radius:50% 50% 0 0 / 100% 100% 0 0}
+    .reed{position:absolute; bottom:36px; width:4px; height:24px; background:#166534; border-radius:999px; transform-origin:bottom; transform:rotate(var(--rrot,0deg)); animation:reedSway 3.4s ease-in-out infinite alternate}
+    .r1{left:18px; --rrot:-12deg}.r2{left:26px; --rrot:8deg; animation-delay:-1.1s}.r3{right:98px; --rrot:-8deg; animation-delay:-2.2s}.r4{right:90px; --rrot:10deg; animation-delay:-.6s}
     @keyframes reedSway{from{transform:rotate(calc(var(--rrot,0deg) - 4deg))}to{transform:rotate(calc(var(--rrot,0deg) + 5deg))}}
-    .flag{position:absolute; right:94px; bottom:48px; width:4px; height:48px; background:#1e293b; opacity:0; transition:opacity .3s ease}
-    .flag::after{content:""; position:absolute; left:4px; top:0; width:34px; height:22px; background:#f43f5e; clip-path:polygon(0 0,100% 24%,0 50%)}
+    .flag{position:absolute; right:80px; bottom:40px; width:3px; height:40px; background:#1e293b; opacity:0; transition:opacity .3s ease}
+    .flag::after{content:""; position:absolute; left:3px; top:0; width:28px; height:18px; background:#f43f5e; clip-path:polygon(0 0,100% 24%,0 50%)}
     .stage-5 .flag{opacity:1; animation:flagWave 1s ease-in-out infinite alternate}
     @keyframes flagWave{0%{transform:skewY(-2deg)}100%{transform:skewY(4deg)}}
     .sceneLabel{
-      position:absolute;
-      left:12px;
-      bottom:62px;
-      border-radius:999px;
-      padding:4px 8px;
-      background:rgba(255,255,255,.74);
-      color:#0f172a;
-      font-size:.70rem;
-      font-weight:950;
-      backdrop-filter:blur(5px);
-      box-shadow:0 6px 14px rgba(15,23,42,.10);
-      z-index:9;
-      max-width:calc(100% - 128px);
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
+      position:absolute; left:8px; bottom:48px;
+      border-radius:999px; padding:3px 8px;
+      background:rgba(8,16,32,.62); color:#e8f7ff;
+      font-size:.66rem; font-weight:900;
+      backdrop-filter:blur(6px);
+      border:1px solid rgba(44,240,255,.25);
+      box-shadow:0 0 12px rgba(44,240,255,.15);
+      z-index:9; max-width:calc(100% - 110px);
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+      font-family:var(--font-display); letter-spacing:.04em;
     }
     .sceneOverlay{
-      position:absolute;
-      left:10px;
-      bottom:10px;
-      top:auto;
-      max-width:calc(100% - 126px);
-      min-width:0;
-      border-radius:16px;
-      padding:8px 10px;
-      background:rgba(255,255,255,.78);
+      position:absolute; left:8px; bottom:8px; top:auto;
+      max-width:calc(100% - 108px); min-width:0;
+      border-radius:12px; padding:6px 9px;
+      background:rgba(8,16,32,.68);
       backdrop-filter:blur(8px);
-      box-shadow:0 10px 24px rgba(15,23,42,.12);
-      z-index:9;
-      overflow:hidden;
+      border:1px solid rgba(255,255,255,.1);
+      box-shadow:0 8px 18px rgba(0,0,0,.25);
+      z-index:9; overflow:hidden;
     }
-    .journeyText{font-size:.88rem; font-weight:950; color:#0f172a; line-height:1.15; white-space:nowrap}
+    .journeyText{font-family:var(--font-display); font-size:.82rem; font-weight:800; color:#f0fbff; line-height:1.15; white-space:nowrap; text-shadow:0 0 10px rgba(44,240,255,.35)}
     .journeyMsg{
-      margin-top:4px;
-      color:#475569;
-      font-size:.76rem;
-      font-weight:850;
-      line-height:1.25;
-      white-space:nowrap;
-      overflow:hidden;
-      width:100%;
+      margin-top:2px; color:rgba(200,220,255,.78); font-size:.70rem; font-weight:700; line-height:1.25;
+      white-space:nowrap; overflow:hidden; width:100%;
     }
     .journeyMsg span{display:inline-block; min-width:100%; padding-right:28px; animation:none}
+    .journeyMsg.scroll span{animation:marqueeText 13s linear infinite}
+    @keyframes marqueeText{0%,18%{transform:translateX(0)}82%,100%{transform:translateX(-45%)}}
     .sceneRunner{
-      position:absolute;
-      right:10px;
-      bottom:5px;
-      width:104px;
-      height:116px;
-      z-index:10;
-      pointer-events:none;
-      overflow:visible;
+      position:absolute; right:2px; bottom:2px;
+      width:92px; height:102px; z-index:10; pointer-events:none; overflow:visible;
+      transform:scale(.78); transform-origin:right bottom;
+      filter:drop-shadow(0 0 8px rgba(44,240,255,.25));
     }
-    .runner-caption{
-      display:none;
-    }
+    .runner-caption{display:none}
     .groundFlow{
-      position:absolute; left:0; right:0; bottom:9px; height:4px; z-index:2; border-radius:999px;
-      background:repeating-linear-gradient(90deg, rgba(255,255,255,.55) 0 16px, transparent 16px 44px);
-      opacity:.65;
-      animation:groundShift44 var(--gndDur,1.2s) linear infinite;
-      animation-play-state:var(--gndPlay,paused);
+      position:absolute; left:0; right:0; bottom:8px; height:3px; z-index:2; border-radius:999px;
+      background:repeating-linear-gradient(90deg, rgba(255,255,255,.55) 0 14px, transparent 14px 38px);
+      opacity:.65; animation:groundShift44 var(--gndDur,1.2s) linear infinite; animation-play-state:var(--gndPlay,paused);
     }
     @keyframes groundShift44{to{background-position-x:44px}}
     .fxLayer{position:absolute; inset:0; pointer-events:none; z-index:12; overflow:hidden}
     .confetti{position:absolute; top:-14px; width:7px; height:11px; border-radius:2px; opacity:.95; animation:confettiFall 1.6s linear forwards}
     @keyframes confettiFall{0%{transform:translateY(0) rotate(0deg)}100%{transform:translateY(200px) rotate(560deg); opacity:.6}}
-    .sceneStep{position:absolute; right:40px; bottom:92px; z-index:12; font-weight:950; font-size:.92rem; color:#1d4ed8; text-shadow:0 1px 0 rgba(255,255,255,.85); pointer-events:none; animation:floatStepUp 1.2s ease-out forwards}
-    .floatStep{position:absolute; left:12px; top:0; z-index:5; font-weight:950; font-size:.9rem; color:#2563eb; text-shadow:0 1px 0 #fff; pointer-events:none; animation:floatStepUp 1.1s ease-out forwards}
+    .sceneStep{position:absolute; right:34px; bottom:78px; z-index:12; font-family:var(--font-display); font-weight:900; font-size:.86rem; color:#2cf0ff; text-shadow:0 0 10px rgba(44,240,255,.8), 0 1px 0 rgba(0,0,0,.4); pointer-events:none; animation:floatStepUp 1.2s ease-out forwards}
+    .floatStep{position:absolute; left:12px; top:0; z-index:5; font-family:var(--font-display); font-weight:900; font-size:.86rem; color:#2cf0ff; text-shadow:0 0 8px rgba(44,240,255,.7); pointer-events:none; animation:floatStepUp 1.1s ease-out forwards}
     @keyframes floatStepUp{0%{transform:translateY(4px); opacity:0}18%{opacity:1}100%{transform:translateY(-30px); opacity:0}}
     .scene.stageUp{animation:sceneCelebrate .9s ease}
     @keyframes sceneCelebrate{0%{filter:brightness(1)}25%{filter:brightness(1.32) saturate(1.25)}100%{filter:brightness(1)}}
@@ -325,18 +331,12 @@
     .medal.unlock{animation:medalPop .9s cubic-bezier(.34,1.56,.64,1)}
     @keyframes medalPop{0%{transform:scale(1)}35%{transform:scale(1.35) rotate(-6deg)}70%{transform:scale(.95) rotate(3deg)}100%{transform:scale(1)}}
     .runner-sparkle{
-      position:absolute;
-      right:74px;
-      bottom:86px;
-      color:#f59e0b;
-      font-size:20px;
-      opacity:0;
-      transform:scale(.8);
-      z-index:13;
+      position:absolute; right:66px; bottom:76px; color:#ffc14a; font-size:18px;
+      opacity:0; transform:scale(.8); z-index:13;
+      filter:drop-shadow(0 0 6px rgba(255,193,74,.8));
     }
     .runner-sparkle.show{opacity:1; animation:sparklePulse 1.15s ease-in-out infinite}
-
-    .sceneRunner svg{position:absolute; inset:0; width:100%; height:100%; overflow:visible; filter:drop-shadow(0 4px 4px rgba(15,23,42,.16)); transform:scaleX(-1);}
+    .sceneRunner svg{position:absolute; inset:0; width:100%; height:100%; overflow:visible; filter:drop-shadow(0 3px 3px rgba(15,23,42,.16)); transform:scaleX(-1)}
     .sceneRunner svg line{stroke-linecap:round}
     .sceneRunner .skinF{stroke:#ffe0bd}
     .sceneRunner .skinB{stroke:#c98f5f}
@@ -345,94 +345,448 @@
     .sceneRunner .puff{transform-box:fill-box; transform-origin:center; opacity:.5; animation:puffOut .8s ease-out forwards}
     @keyframes puffOut{to{transform:translate(-16px,-10px) scale(2.2); opacity:0}}
     @keyframes sparklePulse{0%,100%{transform:scale(.75) rotate(0deg);opacity:.45}50%{transform:scale(1.18) rotate(18deg);opacity:1}}
-    @keyframes marqueeText{0%,18%{transform:translateX(0)}82%,100%{transform:translateX(-45%)} }
 
-
-    .medalRow{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-    .medal{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-width:34px;height:30px;
-      padding:0 8px;
+    .medalRow{
+      position:relative;
+      display:flex; gap:0; margin-top:12px; justify-content:space-between;
+      padding:0 2px;
+    }
+    .medalRow::before{
+      content:"";
+      position:absolute; left:8%; right:8%; top:50%;
+      height:2px; transform:translateY(-50%);
+      background:linear-gradient(90deg, rgba(44,240,255,.15), rgba(167,139,250,.35), rgba(93,255,176,.2));
       border-radius:999px;
-      background:#fff;
-      border:1px solid #e2e8f0;
-      filter:grayscale(1);
-      opacity:.45;
-      transition:all .25s ease;
-      font-size:.86rem;
-      font-weight:900;
-      color:#475569;
-      gap:4px;
+      z-index:0;
     }
-    .medal.active{filter:none;opacity:1;background:#fff7ed;border-color:#fed7aa;box-shadow:0 8px 18px rgba(245,158,11,.16)}
-    /* 演出はこのページの主目的なのでOSのreduced-motion設定より優先する。止めたい場合はURLに ?motion=off */
-    body.motion-off .cloudLayer,body.motion-off .groundFlow,body.motion-off .road::before,body.motion-off .trail::after,body.motion-off .water::after,body.motion-off .tree::before,body.motion-off .reed,body.motion-off .scene .sun,body.motion-off .stage-5 .flag,body.motion-off .runner-sparkle.show,body.motion-off .skyFx .fly,body.motion-off .balloonBob,body.motion-off .bird::before,body.motion-off .bird::after,body.motion-off .stars i{animation:none !important}
-    @media (max-width:640px){
-      .wrap{padding:12px 0 64px}
-      .hero{padding:18px 16px 14px; border-radius:24px}
-      h1{font-size:1.34rem}
-      .hero p{font-size:.9rem; margin-top:8px}
-      .chips{flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch; margin-top:12px; padding-bottom:2px}
-      .chips::-webkit-scrollbar{display:none}
-      .chip{flex:0 0 auto; padding:6px 10px; font-size:.78rem}
-      .grid{gap:10px}
-      .pad{padding:13px 12px}
-      details summary{padding:12px 14px}
-      .journeyTop{padding:10px}
-      .medalRow{margin-top:6px}
-      .medal{min-width:30px; height:26px; font-size:.8rem}
-      .scene{height:136px}
-      .sceneOverlay{left:8px; bottom:8px; max-width:calc(100% - 96px); padding:7px 8px}
-      .journeyText{font-size:.80rem}
-      .journeyMsg{font-size:.70rem}
-      .journeyMsg.scroll span{animation:marqueeText 13s linear infinite}
-      .sceneRunner{right:2px; bottom:3px; transform:scale(.74); transform-origin:right bottom}
-      .sceneLabel{left:8px; bottom:54px; right:auto; max-width:calc(100% - 98px); font-size:.66rem; padding:4px 7px}
-      .medal span{display:none}
+    .medal{
+      position:relative; z-index:1;
+      flex:1; display:inline-flex; align-items:center; justify-content:center;
+      width:36px; height:36px; max-width:42px; margin:0 auto;
+      border-radius:50%;
+      background:linear-gradient(160deg, #152238, #0b1424);
+      border:1px solid rgba(255,255,255,.1);
+      filter:grayscale(1); opacity:.4; transition:all .3s ease;
+      font-size:.9rem; font-weight:800; color:var(--text-dim);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+    }
+    .medal.active{
+      filter:none; opacity:1;
+      background:linear-gradient(160deg, #1a3a55, #0f2438);
+      border-color:rgba(255,193,74,.55);
+      box-shadow:0 0 0 1px rgba(255,193,74,.2), 0 0 16px rgba(255,193,74,.28), inset 0 1px 0 rgba(255,255,255,.12);
+      color:#fff;
+    }
+    .medal span{display:none}
+
+    .mood-row{
+      display:flex; align-items:center; justify-content:space-between; gap:8px;
+      margin-top:10px; padding:0 2px;
+    }
+    .mood-chip{
+      display:inline-flex; align-items:center; gap:7px;
+      font-size:.78rem; font-weight:800; color:var(--text);
+      font-family:var(--font-display); letter-spacing:.02em;
+      padding:5px 10px 5px 8px;
+      border-radius:999px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(44,240,255,.14);
+    }
+    .mood-chip .pulse{
+      width:8px; height:8px; border-radius:50%;
+      background:var(--cyan);
+      box-shadow:0 0 0 3px rgba(44,240,255,.18), 0 0 10px rgba(44,240,255,.6);
+    }
+    .mood-chip.mode-fast .pulse{background:var(--lime); box-shadow:0 0 0 3px rgba(93,255,176,.2), 0 0 10px rgba(93,255,176,.55)}
+    .mood-chip.mode-jog .pulse{background:var(--blue); box-shadow:0 0 0 3px rgba(59,130,255,.2), 0 0 10px rgba(59,130,255,.5)}
+    .mood-chip.mode-walk .pulse{background:var(--amber); box-shadow:0 0 0 3px rgba(255,193,74,.18), 0 0 10px rgba(255,193,74,.45)}
+    .mood-steps{
+      font-family:var(--font-display); font-size:.78rem; font-weight:800;
+      color:var(--cyan); letter-spacing:.04em;
+      text-shadow:0 0 12px rgba(44,240,255,.35);
     }
 
-    @media (min-width:800px){
-      .wrap{width:min(1120px,100% - 42px); padding-top:24px}
-      .hero{padding:28px 28px 24px}
-      h1{font-size:2rem}
-      .main{grid-template-columns:1.1fr .9fr; align-items:start}
-      .mission{grid-template-columns:repeat(3,1fr)}
-      .schedule{grid-template-columns:1fr 1fr}
-      .scoreboard{grid-template-columns:repeat(4,1fr)}
-      .roadmap{grid-template-columns:repeat(2,1fr)}
+    .today-card{
+      position:relative;
+      border-radius:22px;
+      padding:15px 14px 13px;
+      margin-bottom:10px;
+      color:#fff;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 92% 8%, rgba(44,240,255,.28), transparent 30%),
+        radial-gradient(circle at 0% 100%, rgba(167,139,250,.22), transparent 36%),
+        linear-gradient(145deg, #0a1830 0%, #0f2d55 48%, #0b3d4a 110%);
+      border:1px solid rgba(44,240,255,.28);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.04) inset,
+        0 0 40px rgba(44,240,255,.12),
+        0 20px 44px rgba(0,0,0,.4);
+      isolation:isolate;
     }
+    .today-card::before{
+      content:"";
+      position:absolute; inset:0; z-index:-1;
+      background:
+        linear-gradient(120deg, transparent 35%, rgba(255,255,255,.09) 48%, transparent 62%),
+        repeating-linear-gradient(-22deg, transparent 0 10px, rgba(255,255,255,.02) 10px 11px);
+      transform:translateX(-120%);
+      animation:sheen 6.5s ease-in-out infinite;
+    }
+    .today-card::after{
+      content:"";
+      position:absolute;
+      top:10px; right:12px;
+      width:54px; height:54px;
+      border-radius:50%;
+      border:1px dashed rgba(44,240,255,.25);
+      pointer-events:none;
+      animation:spinSlow 18s linear infinite;
+    }
+    @keyframes spinSlow{to{transform:rotate(360deg)}}
+    @keyframes sheen{0%,65%{transform:translateX(-120%)}100%{transform:translateX(130%)}}
+    .today-card.done{
+      background:
+        radial-gradient(circle at 90% 10%, rgba(93,255,176,.28), transparent 32%),
+        linear-gradient(145deg, #06261c 0%, #0b4a3a 50%, #0a4d5c 120%);
+      border-color:rgba(93,255,176,.35);
+      box-shadow:0 0 40px rgba(93,255,176,.14), 0 20px 44px rgba(0,0,0,.4);
+    }
+    .today-card.done::after{border-color:rgba(93,255,176,.3)}
+    .hud-corners{position:absolute; inset:8px; pointer-events:none; z-index:2}
+    .hud-corners i{position:absolute; width:12px; height:12px; border-color:rgba(44,240,255,.55); border-style:solid}
+    .hud-corners i:nth-child(1){left:0; top:0; border-width:2px 0 0 2px}
+    .hud-corners i:nth-child(2){right:0; top:0; border-width:2px 2px 0 0}
+    .hud-corners i:nth-child(3){left:0; bottom:0; border-width:0 0 2px 2px}
+    .hud-corners i:nth-child(4){right:0; bottom:0; border-width:0 2px 2px 0}
+    .today-label{
+      display:inline-flex; align-items:center; gap:7px;
+      font-family:var(--font-display); font-size:.72rem; font-weight:800;
+      letter-spacing:.14em; text-transform:uppercase;
+      color:rgba(180,240,255,.85);
+    }
+    .today-label .dot{
+      width:8px; height:8px; border-radius:50%;
+      background:var(--lime); box-shadow:0 0 0 4px rgba(93,255,176,.18), 0 0 12px rgba(93,255,176,.7);
+      animation:pulseDot 1.8s ease-in-out infinite;
+    }
+    @keyframes pulseDot{0%,100%{transform:scale(1); opacity:1}50%{transform:scale(1.2); opacity:.65}}
+    .today-card.done .today-label .dot{background:var(--amber); box-shadow:0 0 0 4px rgba(255,193,74,.2), 0 0 12px rgba(255,193,74,.6); animation:none}
+    .today-main{
+      margin:8px 0 0;
+      font-size:1.12rem; font-weight:900; line-height:1.32;
+      letter-spacing:.01em;
+      text-shadow:0 2px 18px rgba(0,0,0,.35);
+    }
+    .today-note{
+      margin:6px 0 0;
+      font-size:.82rem; color:rgba(210,228,255,.78); line-height:1.4;
+      max-width:92%;
+    }
+    .today-actions{display:flex; gap:8px; margin-top:13px; align-items:center}
+    .today-check{
+      flex:1; display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      min-height:48px; border:0; border-radius:14px; cursor:pointer;
+      font-family:var(--font-display); font-size:.95rem; font-weight:900;
+      letter-spacing:.04em;
+      color:#041018;
+      background:linear-gradient(135deg, #7cf6ff 0%, #2cf0ff 40%, #5dffb0 120%);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.25) inset,
+        0 0 24px rgba(44,240,255,.35),
+        0 10px 24px rgba(0,0,0,.28);
+      transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
+      -webkit-tap-highlight-color:transparent;
+    }
+    .today-check:active{transform:scale(.97); filter:brightness(1.05)}
+    .today-check.is-done{
+      color:#041018;
+      background:linear-gradient(135deg, #ffe08a, #5dffb0);
+      box-shadow:0 0 24px rgba(93,255,176,.3), 0 10px 24px rgba(0,0,0,.28);
+    }
+    .today-meta{
+      font-family:var(--font-display); font-size:.78rem; font-weight:800;
+      color:rgba(180,230,255,.7); white-space:nowrap; letter-spacing:.04em;
+    }
+
+    .card{
+      background:linear-gradient(180deg, rgba(16,26,46,.88), rgba(10,16,30,.9));
+      border:1px solid rgba(120,170,255,.14);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      backdrop-filter:blur(12px);
+    }
+    .pad{padding:14px}
+    .section-title{
+      margin:0 0 8px; font-size:.98rem; font-weight:900; letter-spacing:.02em;
+      display:flex; align-items:center; justify-content:space-between; gap:8px;
+      font-family:var(--font-display); color:#f2f7ff;
+    }
+    .week-hero{margin-bottom:10px}
+    .week-head{display:flex; justify-content:space-between; gap:10px; align-items:flex-start; margin-bottom:8px}
+    .week-title{font-family:var(--font-display); font-weight:800; font-size:1.05rem; line-height:1.25; color:#f2f7ff}
+    .date{
+      color:var(--text-dim); font-size:.8rem; margin-top:2px; line-height:1.4;
+      display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; overflow:hidden;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:4px;
+      border-radius:999px; padding:5px 9px;
+      font-size:.72rem; font-weight:900;
+      background:rgba(44,240,255,.1); color:var(--cyan);
+      border:1px solid rgba(44,240,255,.28);
+      white-space:nowrap;
+      font-family:var(--font-display); letter-spacing:.03em;
+      box-shadow:0 0 12px rgba(44,240,255,.1);
+    }
+    .pill.green{background:rgba(93,255,176,.1); color:var(--lime); border-color:rgba(93,255,176,.3); box-shadow:0 0 12px rgba(93,255,176,.1)}
+    .pill.amber{background:rgba(255,193,74,.1); color:var(--amber); border-color:rgba(255,193,74,.3)}
+    .pill.rose{background:rgba(255,93,143,.1); color:var(--rose); border-color:rgba(255,93,143,.3)}
+
+    .mission{display:grid; gap:8px}
+    .run{
+      position:relative;
+      display:grid; grid-template-columns:auto 1fr; gap:10px; align-items:flex-start;
+      border:1px solid rgba(120,170,255,.12);
+      border-radius:16px; padding:10px 11px;
+      background:linear-gradient(180deg, rgba(18,30,52,.9), rgba(12,20,36,.92));
+      transition:border-color .2s ease, background .2s ease, box-shadow .2s ease, transform .15s ease;
+    }
+    .run.key{
+      border-color:rgba(44,240,255,.28);
+      background:linear-gradient(180deg, rgba(18,40,70,.95), rgba(12,28,48,.95));
+      box-shadow:0 0 0 1px rgba(44,240,255,.05), 0 0 18px rgba(44,240,255,.06);
+    }
+    .run.is-checked{
+      background:linear-gradient(180deg, rgba(12,42,36,.92), rgba(10,28,30,.95));
+      border-color:rgba(93,255,176,.28);
+    }
+    .run.is-focus{
+      box-shadow:0 0 0 1px rgba(44,240,255,.45), 0 0 22px rgba(44,240,255,.18);
+      border-color:rgba(44,240,255,.55);
+    }
+    .run .check{
+      width:24px; height:24px; margin-top:1px;
+      accent-color:var(--cyan);
+      flex:0 0 auto;
+    }
+    .run .day{
+      font-weight:900; font-size:.86rem;
+      display:flex; align-items:baseline; gap:6px; flex-wrap:wrap;
+      font-family:var(--font-display); color:#eef5ff; letter-spacing:.02em;
+    }
+    .runBody{min-width:0}
+    .run .daymain{font-weight:650; font-size:.88rem; color:var(--text-dim); line-height:1.4}
+    .run .noteBtn{
+      border:none; background:none; box-shadow:none; border-radius:0;
+      color:var(--cyan); font-size:.76rem; font-weight:800;
+      padding:2px 0; cursor:pointer; text-decoration:underline dotted;
+      font-family:var(--font-body);
+    }
+    .run .noteText{color:var(--muted); font-size:.82rem; margin-top:2px; line-height:1.45}
+    .heat{
+      border-left:3px solid var(--amber); padding:8px 10px;
+      color:#ffe3a8; background:rgba(255,193,74,.08); border-radius:12px;
+      margin-top:8px; font-size:.86rem; line-height:1.45;
+      border:1px solid rgba(255,193,74,.18); border-left-width:3px;
+    }
+
+    .togglebar{display:flex; gap:6px; flex-wrap:wrap; margin-top:10px}
+    button, .qbtn{
+      white-space:nowrap; text-decoration:none; color:var(--text);
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(120,170,255,.16);
+      border-radius:999px;
+      padding:9px 12px; font-size:.84rem; font-weight:800;
+      box-shadow:0 6px 16px rgba(0,0,0,.2);
+      cursor:pointer; appearance:none;
+      font-family:var(--font-display);
+      letter-spacing:.02em;
+      -webkit-tap-highlight-color:transparent;
+    }
+    button:active, .qbtn:active{transform:scale(.97)}
+    button.primary, .qbtn.primary{
+      background:linear-gradient(135deg, #1e6bff, #2cf0ff);
+      color:#041018; border-color:transparent;
+      box-shadow:0 0 20px rgba(44,240,255,.25), 0 10px 22px rgba(0,0,0,.28);
+    }
+    button.ghost{
+      background:transparent; box-shadow:none; border-color:transparent;
+      color:var(--muted); padding:9px 8px;
+    }
+
+    .stack{display:grid; gap:8px; margin-top:10px}
+    details.card-acc{
+      background:linear-gradient(180deg, rgba(16,26,46,.88), rgba(10,16,30,.9));
+      border:1px solid rgba(120,170,255,.14);
+      border-radius:18px; box-shadow:var(--shadow); overflow:hidden;
+      backdrop-filter:blur(12px);
+    }
+    details.card-acc > summary{
+      list-style:none; cursor:pointer;
+      padding:13px 14px; font-weight:900;
+      display:flex; justify-content:space-between; gap:12px; align-items:center;
+      font-size:.92rem; color:#eef5ff;
+      font-family:var(--font-display);
+    }
+    details.card-acc > summary::-webkit-details-marker{display:none}
+    details.card-acc > summary .right{
+      color:var(--muted); font-size:.76rem; font-weight:700; text-align:right;
+      font-family:var(--font-num);
+    }
+    details.card-acc > summary::after{
+      content:"";
+      width:8px; height:8px; border-right:2px solid var(--cyan); border-bottom:2px solid var(--cyan);
+      transform:rotate(45deg); transition:transform .2s ease; flex:0 0 auto; margin-left:4px;
+      opacity:.7;
+    }
+    details.card-acc[open] > summary::after{transform:rotate(-135deg); margin-top:4px}
+    details.card-acc .inner{padding:0 14px 14px}
+    details.current{background:linear-gradient(180deg, rgba(18,40,70,.95), rgba(12,22,40,.95))}
+    details.current > summary{border-left:3px solid var(--cyan); padding-left:11px}
+    .week-list{display:grid; gap:0}
+    .week-list details{border-top:1px solid rgba(120,170,255,.1)}
+    .week-list details:first-child{border-top:none}
+    .week-list details > summary{
+      list-style:none; cursor:pointer; padding:12px 4px;
+      font-weight:900; display:flex; justify-content:space-between; gap:10px; align-items:center;
+      color:#eef5ff;
+    }
+    .week-list details > summary::-webkit-details-marker{display:none}
+    .week-list details > summary .right{color:var(--muted); font-size:.78rem; font-weight:800; font-family:var(--font-num)}
+    .week-card-title{display:flex; gap:6px; flex-wrap:wrap; align-items:center; font-size:.9rem}
+    .schedule{display:grid; gap:8px}
+
+    .note{
+      border:1px solid rgba(255,193,74,.22); background:rgba(255,193,74,.08); color:#ffe3a8;
+      border-radius:14px; padding:10px 12px; font-size:.86rem; margin:0 0 10px; line-height:1.5;
+    }
+    .success{
+      border:1px solid rgba(93,255,176,.22); background:rgba(93,255,176,.08); color:#b8ffe0;
+      border-radius:14px; padding:10px 12px; font-size:.86rem; margin-bottom:10px; line-height:1.5;
+    }
+    .warn{
+      border:1px solid rgba(255,93,143,.25); background:rgba(255,93,143,.08); color:#ffc1d4;
+      border-radius:14px; padding:10px 12px; font-size:.86rem; margin-top:10px;
+    }
+    .roadmap{display:grid; gap:8px}
+    .phase{
+      border:1px solid rgba(120,170,255,.12);
+      background:rgba(255,255,255,.03);
+      border-radius:14px; padding:12px;
+    }
+    .phase h3{margin:0 0 4px; font-size:.92rem; color:#f0f6ff; font-family:var(--font-display)}
+    .phase p{margin:0; color:var(--text-dim); font-size:.86rem; line-height:1.5}
+    .mini{display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+    .mini span{
+      display:inline-flex; border-radius:999px; padding:4px 9px;
+      font-size:.74rem; font-weight:800;
+      background:rgba(44,240,255,.08);
+      border:1px solid rgba(44,240,255,.18); color:#b7f7ff;
+    }
+    .scoreboard{display:grid; grid-template-columns:1fr 1fr; gap:8px}
+    .score{
+      border-radius:14px; border:1px solid rgba(120,170,255,.12);
+      background:linear-gradient(160deg, rgba(20,34,58,.9), rgba(12,20,36,.95)); padding:10px 11px;
+    }
+    .score b{display:block; font-size:.95rem; font-family:var(--font-display); color:#f0f6ff}
+    .score span{display:block; color:var(--muted); font-size:.76rem; margin-top:2px}
+    .timeline{display:grid; gap:7px}
+    .lane{display:grid; grid-template-columns:44px 1fr; gap:8px; align-items:center}
+    .badge{
+      width:44px; height:44px; border-radius:14px;
+      display:flex; align-items:center; justify-content:center;
+      font-family:var(--font-display); font-weight:900; font-size:.78rem; color:#041018;
+      background:linear-gradient(135deg, #2cf0ff, #5dffb0);
+      box-shadow:0 0 16px rgba(44,240,255,.3);
+    }
+    .laneText{
+      border:1px solid rgba(120,170,255,.12);
+      background:rgba(255,255,255,.03);
+      border-radius:14px; padding:9px 11px;
+    }
+    .laneText b{display:block; font-size:.88rem; color:#eef5ff; font-family:var(--font-display)}
+    .laneText span{display:block; color:var(--text-dim); font-size:.8rem; line-height:1.4}
+    .foot{
+      color:var(--muted); font-size:.74rem; text-align:center;
+      margin-top:14px; line-height:1.5; padding:0 8px;
+    }
+
+    .principles{
+      display:flex; gap:6px; overflow-x:auto; padding:2px 1px 6px;
+      margin:-2px 0 10px; scrollbar-width:none; -webkit-overflow-scrolling:touch;
+    }
+    .principles::-webkit-scrollbar{display:none}
+    .principle{
+      flex:0 0 auto;
+      display:inline-flex; align-items:center; gap:5px;
+      padding:7px 11px; border-radius:999px;
+      font-size:.74rem; font-weight:800; color:var(--text-dim);
+      background:rgba(14,24,44,.65);
+      border:1px solid rgba(120,170,255,.14);
+      box-shadow:0 4px 14px rgba(0,0,0,.2);
+      white-space:nowrap;
+      backdrop-filter:blur(8px);
+    }
+
+    body.motion-off .cloudLayer,body.motion-off .groundFlow,body.motion-off .road::before,body.motion-off .trail::after,body.motion-off .water::after,body.motion-off .tree::before,body.motion-off .reed,body.motion-off .scene .sun,body.motion-off .stage-5 .flag,body.motion-off .runner-sparkle.show,body.motion-off .skyFx .fly,body.motion-off .balloonBob,body.motion-off .bird::before,body.motion-off .bird::after,body.motion-off .stars i,body.motion-off .today-card::before,body.motion-off .today-card::after,body.motion-off .today-label .dot,body.motion-off .topbar-inner::before{animation:none !important}
+
+    @media (max-width:380px){
+      .wrap{width:min(100% - 16px, 720px)}
+      .today-main{font-size:1.02rem}
+      .top-title{font-size:1.02rem}
+      .scene{height:110px}
+    }
+    @media (min-width:720px){
+      .wrap{width:min(760px, 100% - 32px); padding-top:18px}
+      .scene{height:142px}
+      .sceneRunner{transform:scale(.9)}
+      .medal span{display:none}
+      .scoreboard{grid-template-columns:repeat(4,1fr)}
+      .roadmap{grid-template-columns:1fr 1fr}
+    }
+
   </style>
 </head>
 <body>
   <div class="wrap">
-    <header class="hero">
-      <h1>夏の頻度優先ブリッジ計画</h1>
-      <p>まず週3の再現性。週間総量が安定してから、条件の良い日にロングを伸ばす。</p>
-      <div class="chips">
-        <span class="chip">🎯 週3 → 総量 → ロング</span>
-        <span class="chip">🌡️ WBGT 28以上は質・長時間なし</span>
-        <span class="chip">🦵 補強は小さく漸進</span>
-        <span class="chip">💧 90分前後から補給練習</span>
-        <span class="chip">🚫 取り返し禁止</span>
+    <!-- Sticky command header -->
+    <header class="topbar" aria-label="今週サマリー">
+      <div class="topbar-inner">
+        <div class="top-brand">
+          <div class="top-kicker">SUMMER BRIDGE · 2026</div>
+          <div class="top-title" id="currentWeekNum">W-</div>
+          <div class="top-sub" id="currentWeekDates">-</div>
+        </div>
+        <div class="ring-wrap" aria-label="今週の進捗">
+          <svg viewBox="0 0 54 54" aria-hidden="true">
+            <defs>
+              <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#2cf0ff"/>
+                <stop offset="55%" stop-color="#5dffb0"/>
+                <stop offset="100%" stop-color="#a78bfa"/>
+              </linearGradient>
+            </defs>
+            <circle class="track" cx="27" cy="27" r="22"></circle>
+            <circle class="prog" id="weekRing" cx="27" cy="27" r="22"></circle>
+          </svg>
+          <div class="ring-center"><span id="weekRingLabel">0/4</span></div>
+        </div>
       </div>
-
-
     </header>
 
-    <nav class="quicknav" aria-label="クイックナビ">
-      <div class="quicknav-row">
-        <a class="qbtn primary" href="#thisweek">今週</a>
-        <a class="qbtn" href="#weeks">W0–W8</a>
-        <a class="qbtn" href="#rules">運用ルール</a>
-        <a class="qbtn" href="#gear">ギア上げ方針</a>
-        <a class="qbtn" href="#strength">補強・補給</a>
-        <a class="qbtn" href="#roadmap">秋への接続</a>
-      </div>
-    </nav>
+    <!-- Compact principles -->
+    <div class="principles" aria-label="基本方針">
+      <span class="principle">🎯 週3 → 総量 → ロング</span>
+      <span class="principle">🌡️ WBGT28↑ 質・長時間なし</span>
+      <span class="principle">🚫 取り返し禁止</span>
+      <span class="principle">🦵 補強は小さく</span>
+      <span class="principle">💧 90分〜補給練習</span>
+    </div>
 
-    <section class="progressBox journeyBox journeyTop" aria-label="積み上げ風景と今週の調子">
+    <!-- Journey scenery -->
+    <section class="journeyTop" aria-label="積み上げ風景と今週の調子">
       <div class="scene stage-0" id="journeyScene" aria-label="累積の積み上げで変わる風景">
         <span class="sun"></span>
         <span class="skyTint" aria-hidden="true"></span>
@@ -461,7 +815,7 @@
         </div>
         <div class="sceneOverlay">
           <div class="journeyText" id="journeyText">積み上げ 0歩</div>
-          <div class="journeyMsg"><span id="journeyMsg">チェックを入れるほど風景が変わります。スキップしても風景は戻りません。</span></div>
+          <div class="journeyMsg"><span id="journeyMsg">チェックを入れるほど風景が変わります</span></div>
         </div>
         <span class="sceneLabel" id="sceneLabel">朝の街</span>
         <span class="groundFlow" aria-hidden="true"></span>
@@ -472,7 +826,8 @@
           <svg id="runnerFigure" viewBox="0 0 110 120" aria-hidden="true">
             <defs>
               <linearGradient id="rTorsoG" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#60a5fa"/><stop offset="1" stop-color="#2563eb"/>
+                <stop offset="0%" stop-color="#5eefff"/>
+                <stop offset="100%" stop-color="#3b82ff"/>
               </linearGradient>
             </defs>
             <ellipse id="rShadow" cx="55" cy="113" rx="24" ry="4" fill="rgba(15,23,42,.20)"/>
@@ -482,11 +837,9 @@
                 <g id="rForeB"><line x1="0" y1="0" x2="0" y2="12" class="skinB" stroke-width="4.2"/><circle cx="0" cy="12" r="2.6" class="skinBF"/></g></g>
               <g id="rThighB"><line x1="0" y1="0" x2="0" y2="19" stroke="#141f52" stroke-width="7"/>
                 <g id="rShinB"><line x1="0" y1="0" x2="0" y2="17" class="skinB" stroke-width="5.6"/><rect x="-3" y="13.5" width="13" height="4.6" rx="2.3" fill="#5f6b7d"/></g></g>
-              <line x1="0" y1="2" x2="2" y2="-26" stroke="url(#rTorsoG)" stroke-width="12"/>
-              <circle cx="5" cy="-36" r="8" fill="#ffe0bd"/>
-              <circle cx="10" cy="-37.6" r="1.1" fill="#0f172a"/>
-              <path d="M -3.2 -38.4 A 8.3 8.3 0 0 1 13.2 -38.4 Z" fill="#f59e0b"/>
-              <rect x="10" y="-41.2" width="9" height="2.8" rx="1.4" fill="#f59e0b"/>
+              <ellipse cx="0" cy="-34" rx="9.5" ry="10.5" fill="#ffe0bd"/>
+              <path d="M-11 -38 Q0 -48 11 -38" fill="#1e293b"/>
+              <rect x="-11" y="-28" width="22" height="28" rx="8" fill="url(#rTorsoG)"/>
               <g id="rThighF"><line x1="0" y1="0" x2="0" y2="19" stroke="#1d4ed8" stroke-width="8"/>
                 <g id="rShinF"><line x1="0" y1="0" x2="0" y2="17" class="skinF" stroke-width="6.5"/><rect x="-3" y="13.5" width="14" height="5" rx="2.5" fill="#111827"/></g></g>
               <g id="rArmF"><line x1="0" y1="0" x2="0" y2="14" class="skinF" stroke-width="5.5"/>
@@ -502,63 +855,56 @@
         <span class="medal" data-step="23" title="夏の土台">🌊<span>湖畔</span></span>
         <span class="medal" data-step="30" title="W8到着">🏁<span>到着</span></span>
       </div>
+      <div class="mood-row">
+        <div class="mood-chip mode-rest" id="moodChip">
+          <span class="pulse" aria-hidden="true"></span>
+          <span id="moodText">ウォームアップ中</span>
+        </div>
+        <div class="mood-steps" id="moodSteps">累積 0歩</div>
+      </div>
     </section>
 
+    <!-- Today focus (primary action) -->
+    <section class="today-card" id="todayCard" aria-label="今日のフォーカス">
+      <div class="hud-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="today-label"><span class="dot" aria-hidden="true"></span><span id="todayLabel">NEXT MISSION</span></div>
+      <div class="today-main" id="todayMain">読み込み中…</div>
+      <div class="today-note" id="todayNote"></div>
+      <div class="today-actions">
+        <button type="button" class="today-check" id="todayCheckBtn">COMPLETE</button>
+        <span class="today-meta" id="todayMeta"></span>
+      </div>
+    </section>
 
-    <div class="grid main">
-      <section id="thisweek" class="card pad week-hero">
-        <div class="week-head">
-          <div>
-            <div class="week-title" id="currentWeekNum">W-</div>
-            <div class="date" id="currentWeekDates">-</div>
-          </div>
-          <span class="pill green" id="currentPhase">夏・頻度優先</span>
+    <!-- This week missions -->
+    <section id="thisweek" class="card pad week-hero">
+      <div class="week-head">
+        <div>
+          <div class="week-title">今週のミッション</div>
+          <div class="date" id="weekGoalLine">-</div>
         </div>
-        <h2 class="section-title">今週のミッション</h2>
-        <div class="mission" id="currentMissions"></div>
-        <div class="togglebar">
-          <button class="primary" type="button" id="jumpWeeks">W0–W8を見る</button>
-          <button type="button" id="openAll">全部開く</button>
-          <button type="button" id="resetChecks">チェックをリセット</button>
-        </div>
-      </section>
+        <span class="pill green" id="currentPhase">夏・頻度優先</span>
+      </div>
+      <div class="mission" id="currentMissions"></div>
+      <div class="togglebar">
+        <button class="primary" type="button" id="jumpWeeks">W0–W8</button>
+        <button type="button" id="openAll">全部開く</button>
+        <button class="ghost" type="button" id="resetChecks">リセット</button>
+      </div>
+    </section>
 
-      <aside class="grid">
-        <section class="card pad">
-          <h2 class="section-title">この9週間の勝ち筋</h2>
-          <div class="scoreboard">
-            <div class="score"><b>週3化</b><span>最優先</span></div>
-            <div class="score"><b>総量安定</b><span>30〜35kmへ</span></div>
-            <div class="score"><b>小さな刺激</b><span>流し・cruise-lite</span></div>
-            <div class="score"><b>回復管理</b><span>暑熱・眠気</span></div>
-          </div>
-          <div class="note">「ギアを上げる」はロングだけを伸ばすことではありません。週3回と週間総量を安定させ、7月後半からごく少量のcruise-liteを入れます。</div>
-        </section>
-        <section id="gear" class="card pad">
-          <h2 class="section-title">ギア上げの段階</h2>
-          <div class="timeline">
-            <div class="lane"><div class="badge">W0</div><div class="laneText"><b>リズム再開</b><span>1週間空きから普通に戻す。取り返さない。</span></div></div>
-            <div class="lane"><div class="badge">W1</div><div class="laneText"><b>頻度を先に安定</b><span>平日2本＋週末E。連日は2日目を短く。</span></div></div>
-            <div class="lane"><div class="badge">W4</div><div class="laneText"><b>総量を安定</b><span>15〜17kmを軸に、補強も小さく進める。</span></div></div>
-            <div class="lane"><div class="badge">W8</div><div class="laneText"><b>9月へ接続</b><span>Tではなくcruise-liteで段差を小さくする。</span></div></div>
-          </div>
-        </section>
-      </aside>
-    </div>
-
-    <section id="weeks" class="card" style="margin-top:14px">
-      <details>
-        <summary><span>W0–W8 週間メニュー（7/10改訂）</span><span class="right">チェックはこの端末に保存</span></summary>
+    <!-- Collapsed secondary content -->
+    <div class="stack">
+      <details class="card-acc" id="weeks">
+        <summary><span>W0–W8 週間メニュー</span><span class="right">7/10改訂 · 端末保存</span></summary>
         <div class="inner">
-          <div class="note">W0〜W8で8/30まで進めます。各ミッションは同じ1歩。ロングだけを高得点にせず、平日Eや補強も同じ積み上げとして扱います。</div>
+          <div class="note">W0〜W8で8/30まで。各ミッションは同じ1歩。ロングだけを高得点にせず、平日Eや補強も同じ積み上げ。</div>
           <div class="week-list" id="weekList"></div>
         </div>
       </details>
-    </section>
 
-    <section id="rules" class="card" style="margin-top:14px">
-      <details>
-        <summary><span>運用ルール</span><span class="right">暑熱・雨・寝坊・仕事対応</span></summary>
+      <details class="card-acc" id="rules">
+        <summary><span>運用ルール</span><span class="right">暑熱 · 雨 · 寝坊</span></summary>
         <div class="inner">
           <div class="roadmap">
             <div class="phase"><h3>1. 取り返さない</h3><p>抜けた本数を翌日に足さない。次に走れる日に普通のEで戻す。</p></div>
@@ -568,11 +914,28 @@
           </div>
         </div>
       </details>
-    </section>
 
-    <section id="strength" class="card" style="margin-top:14px">
-      <details>
-        <summary><span>補強・補給ミッション</span><span class="right">走れない週の得点源</span></summary>
+      <details class="card-acc" id="gear">
+        <summary><span>ギア上げ方針</span><span class="right">段階マップ</span></summary>
+        <div class="inner">
+          <div class="scoreboard" style="margin-bottom:10px">
+            <div class="score"><b>週3化</b><span>最優先</span></div>
+            <div class="score"><b>総量安定</b><span>30〜35kmへ</span></div>
+            <div class="score"><b>小さな刺激</b><span>流し・cruise-lite</span></div>
+            <div class="score"><b>回復管理</b><span>暑熱・眠気</span></div>
+          </div>
+          <div class="note">「ギアを上げる」はロングだけを伸ばすことではありません。週3回と週間総量を安定させ、7月後半からごく少量のcruise-liteを入れます。</div>
+          <div class="timeline">
+            <div class="lane"><div class="badge">W0</div><div class="laneText"><b>リズム再開</b><span>1週間空きから普通に戻す。取り返さない。</span></div></div>
+            <div class="lane"><div class="badge">W1</div><div class="laneText"><b>頻度を先に安定</b><span>平日2本＋週末E。連日は2日目を短く。</span></div></div>
+            <div class="lane"><div class="badge">W4</div><div class="laneText"><b>総量を安定</b><span>15〜17kmを軸に、補強も小さく進める。</span></div></div>
+            <div class="lane"><div class="badge">W8</div><div class="laneText"><b>9月へ接続</b><span>Tではなくcruise-liteで段差を小さくする。</span></div></div>
+          </div>
+        </div>
+      </details>
+
+      <details class="card-acc" id="strength">
+        <summary><span>補強・補給</span><span class="right">走れない週の得点</span></summary>
         <div class="inner">
           <div class="roadmap">
             <div class="phase"><h3>補強 15〜20分</h3><p>ヒップヒンジ、スプリットスクワット、膝伸ばし・曲げのカーフ、片脚支持。片脚化・下降速度・回数・バンド張力のどれか1つだけ小さく進める。</p><div class="mini"><span>臀部</span><span>ハム</span><span>カーフ</span><span>片脚支持</span></div></div>
@@ -581,11 +944,9 @@
           <div class="success">雨や台風で走れない週は、補強を1回できたら「流れを守った」と判定してよい。</div>
         </div>
       </details>
-    </section>
 
-    <section id="roadmap" class="card" style="margin-top:14px">
-      <details>
-        <summary><span>秋への接続</span><span class="right">8/30時点でこうなっていたい</span></summary>
+      <details class="card-acc" id="roadmap">
+        <summary><span>秋への接続</span><span class="right">8/30の成功像</span></summary>
         <div class="inner">
           <div class="roadmap">
             <div class="phase"><h3>最低成功ライン</h3><p>暑熱期でも週2〜3本を維持。週末12〜16kmを普通に戻せる。脚の張りを残さない。</p></div>
@@ -595,8 +956,9 @@
           </div>
         </div>
       </details>
-    </section>
-    <div class="foot">2026-07-10改訂版。各ミッションは同じ1歩で、チェック状態と風景進行はブラウザのlocalStorage（v2）に保存されます。</div>
+    </div>
+
+    <div class="foot">2026-07-10改訂版 · 各ミッションは同じ1歩 · チェックと風景進行は localStorage（v2）に保存</div>
   </div>
 
   <script>
@@ -720,26 +1082,29 @@
       return today < parseLocalDate(weeks[0].start) ? 0 : weeks.length - 1;
     }
 
-    function safeId(text){return text.replace(/[^a-zA-Z0-9_-]/g,'_')}
     function checkKey(wi, mi){return `summer_plan_2026_v2_${weeks[wi].code}_${mi}`}
 
     function syncChecks(key, checked){
       document.querySelectorAll(`input[data-check-key="${key}"]`).forEach(input => {
         input.checked = checked;
       });
+      document.querySelectorAll(`.run[data-check-key="${key}"]`).forEach(run => {
+        run.classList.toggle('is-checked', checked);
+      });
     }
 
-    function createRun(item, wi, mi){
+    function createRun(item, wi, mi, opts = {}){
       const div = document.createElement('div');
-      div.className = 'run' + (item.key ? ' key' : '');
       const key = checkKey(wi, mi);
       const stored = localStorage.getItem(key);
       const checked = stored === null ? !!item.done : stored === '1';
+      div.className = 'run' + (item.key ? ' key' : '') + (checked ? ' is-checked' : '') + (opts.focus ? ' is-focus' : '');
+      div.dataset.checkKey = key;
       const parts = item.value.split('。').map(s => s.trim()).filter(Boolean);
       const main = parts[0] + '。';
       const note = parts.length > 1 ? parts.slice(1).join('。') + '。' : '';
       div.innerHTML = `<input class="check" type="checkbox" data-check-key="${key}" ${checked ? 'checked' : ''} aria-label="${item.label}">
-        <div class="runBody"><div class="day">${item.key ? '⭐ ' : ''}${item.label}<span class="daymain">${main}</span></div>${note ? `<button class="noteBtn" type="button" aria-expanded="false">詳細</button><div class="noteText" hidden>${note}</div>` : ''}</div>`;
+        <div class="runBody"><div class="day">${item.key ? '⭐ ' : ''}${item.label}</div><div class="daymain">${main}</div>${note ? `<button class="noteBtn" type="button" aria-expanded="false">詳細</button><div class="noteText" hidden>${note}</div>` : ''}</div>`;
       const cb = div.querySelector('input');
       cb.addEventListener('change', () => {
         localStorage.setItem(key, cb.checked ? '1' : '0');
@@ -762,16 +1127,84 @@
       return div;
     }
 
+    function getNextMissionIndex(wi){
+      const list = weeks[wi].missions;
+      for(let i = 0; i < list.length; i++){
+        if(!getMissionChecked(wi, i)) return i;
+      }
+      return -1;
+    }
+
+    function renderTodayFocus(){
+      const card = document.getElementById('todayCard');
+      const label = document.getElementById('todayLabel');
+      const main = document.getElementById('todayMain');
+      const note = document.getElementById('todayNote');
+      const btn = document.getElementById('todayCheckBtn');
+      const meta = document.getElementById('todayMeta');
+      const mi = getNextMissionIndex(currentIndex);
+      const total = weeks[currentIndex].missions.length;
+      const done = getWeekScore(currentIndex);
+
+      if(mi < 0){
+        card.classList.add('done');
+        label.textContent = 'WEEK CLEAR';
+        main.textContent = '今週のミッション完了！';
+        note.textContent = '取り返さず、来週へ静かにつなぐ。余力があれば軽い補強だけ。';
+        btn.textContent = 'WEEK CLEAR';
+        btn.classList.add('is-done');
+        btn.disabled = true;
+        meta.textContent = `${done}/${total}`;
+        btn.onclick = null;
+        return;
+      }
+
+      const item = weeks[currentIndex].missions[mi];
+      const parts = item.value.split('。').map(s => s.trim()).filter(Boolean);
+      card.classList.remove('done');
+      label.textContent = item.key ? 'KEY MISSION' : 'NEXT MISSION';
+      main.textContent = `${item.key ? '⭐ ' : ''}${item.label} — ${parts[0]}`;
+      note.textContent = parts.length > 1 ? parts.slice(1).join('。') + '。' : (weeks[currentIndex].heat || '');
+      btn.disabled = false;
+      btn.classList.remove('is-done');
+      btn.textContent = 'COMPLETE';
+      meta.textContent = `${done}/${total} · #${mi + 1}`;
+      btn.onclick = () => {
+        const key = checkKey(currentIndex, mi);
+        localStorage.setItem(key, '1');
+        syncChecks(key, true);
+        updateProgress();
+        runnerBurst(1);
+        if(navigator.vibrate) try{ navigator.vibrate(12); }catch(_){}
+      };
+    }
+
+    function updateWeekRing(){
+      const total = weeks[currentIndex].missions.length || 4;
+      const done = getWeekScore(currentIndex);
+      const circ = 2 * Math.PI * 22;
+      const ring = document.getElementById('weekRing');
+      const label = document.getElementById('weekRingLabel');
+      const offset = circ * (1 - done / total);
+      ring.style.strokeDasharray = String(circ);
+      ring.style.strokeDashoffset = String(offset);
+      label.innerHTML = `${done}/${total}`;
+    }
+
     function renderCurrentWeek(index){
       const w = weeks[index];
-      document.getElementById('currentWeekNum').textContent = `${w.code}｜${w.type}`;
+      document.getElementById('currentWeekNum').textContent = `${w.code} · ${w.type}`;
       document.getElementById('currentWeekDates').textContent = `${w.dates}　${w.km}`;
       document.getElementById('currentPhase').textContent = phaseLabel;
+      document.getElementById('weekGoalLine').textContent = w.goal.replace(/。/g, '。 ').trim();
       const host = document.getElementById('currentMissions');
       host.innerHTML = '';
+      const focusIdx = getNextMissionIndex(index);
       w.missions.forEach((m,i)=>{
-        host.appendChild(createRun(m, index, i));
+        host.appendChild(createRun(m, index, i, {focus: i === focusIdx}));
       });
+      renderTodayFocus();
+      updateWeekRing();
     }
 
     function renderWeekList(currentIndex){
@@ -830,28 +1263,30 @@
       const score = getWeekScore(currentIndex);
       const longDone = weeks[currentIndex].missions.some((item, mi) => item.key && getMissionChecked(currentIndex, mi));
       const mood = document.getElementById('runnerMood');
+      const moodText = document.getElementById('moodText');
+      const moodChip = document.getElementById('moodChip');
       const spark = document.getElementById('runnerSpark');
       spark.classList.remove('show');
+      moodChip.classList.remove('mode-rest','mode-walk','mode-jog','mode-fast');
 
-      let mode;
+      let mode, text;
       if(score === 0){
-        mode = 'rest';
-        mood.textContent = '今週の調子：ウォームアップ中';
+        mode = 'rest'; text = 'ウォームアップ中';
       }else if(score === 1){
-        mode = 'walk';
-        mood.textContent = '今週の調子：足踏み開始';
+        mode = 'walk'; text = '足踏み開始';
       }else if(score <= 3){
-        mode = 'jog';
-        mood.textContent = '今週の調子：いいリズム';
+        mode = 'jog'; text = 'いいリズム';
       }else{
-        mode = 'fast';
-        mood.textContent = '今週の調子：快調ピッチ';
+        mode = 'fast'; text = '快調ピッチ';
       }
 
       if(longDone){
         spark.classList.add('show');
-        if(score >= 3) mood.textContent = '今週の調子：ロング達成！';
+        if(score >= 3) text = 'ロング達成！';
       }
+      mood.textContent = '今週の調子：' + text;
+      moodText.textContent = text;
+      moodChip.classList.add('mode-' + mode);
       setRunnerMode(mode);
     }
 
@@ -859,7 +1294,8 @@
       const msg = document.getElementById('journeyMsg');
       if(!msg || !msg.parentElement) return;
       window.requestAnimationFrame(() => {
-        msg.parentElement.classList.toggle('scroll', msg.scrollWidth > msg.parentElement.clientWidth + 6);
+        const parent = msg.closest('.journeyMsg') || msg.parentElement;
+        parent.classList.toggle('scroll', msg.scrollWidth > parent.clientWidth + 6);
       });
     }
 
@@ -871,12 +1307,12 @@
       localStorage.setItem(maxKey, String(maxScore));
 
       const stages = [
-        {step:0, cls:'stage-0', label:'朝の街', msg:'まだウォームアップ。チェックを入れるほど風景が変わります。スキップしても戻りません。'},
-        {step:3, cls:'stage-1', label:'公園の道', msg:'芽が出てきた。まずは流れを切らずに進めばOK。'},
+        {step:0, cls:'stage-0', label:'朝の街', msg:'まだウォームアップ。チェックを入れるほど風景が変わります。'},
+        {step:3, cls:'stage-1', label:'公園の道', msg:'芽が出てきた。まずは流れを切らずに。'},
         {step:9, cls:'stage-2', label:'森の道', msg:'リズムが出てきた。暑熱期として十分前進中。'},
-        {step:16, cls:'stage-3', label:'山の見える道', msg:'中盤まで順調。平日E・補強・ロングが同じ土台になっています。'},
-        {step:23, cls:'stage-4', label:'湖畔の道', msg:'湖畔が見えてきた。頻度と総量の土台ができてきました。'},
-        {step:30, cls:'stage-5', label:'ゴール旗', msg:'W8地点に到着。疲れ切らず9月へ進めれば成功です。'}
+        {step:16, cls:'stage-3', label:'山の見える道', msg:'中盤まで順調。平日E・補強・ロングが同じ土台。'},
+        {step:23, cls:'stage-4', label:'湖畔の道', msg:'湖畔が見えてきた。頻度と総量の土台ができてきた。'},
+        {step:30, cls:'stage-5', label:'ゴール旗', msg:'W8地点に到着。疲れ切らず9月へ進めば成功。'}
       ];
       let stage = stages[0];
       stages.forEach(s => { if(maxScore >= s.step) stage = s; });
@@ -889,7 +1325,9 @@
 
       const journeyGoal = 30;
       const extra = Math.max(0, maxScore - journeyGoal);
-      document.getElementById('journeyText').textContent = extra > 0 ? `積み上げ ${maxScore}歩｜到着＋${extra}歩` : `積み上げ ${maxScore}歩`;
+      const journeyLine = extra > 0 ? `積み上げ ${maxScore}歩｜到着＋${extra}歩` : `積み上げ ${maxScore}歩`;
+      document.getElementById('journeyText').textContent = journeyLine;
+      document.getElementById('moodSteps').textContent = `累積 ${maxScore}歩`;
       document.getElementById('journeyMsg').textContent = stage.msg;
       refreshJourneyMarquee();
 
@@ -910,6 +1348,21 @@
       progressInitialized = true;
 
       updateRunnerMood();
+      renderTodayFocus();
+      updateWeekRing();
+
+      // re-highlight focus mission without full re-render of list if possible
+      const focusIdx = getNextMissionIndex(currentIndex);
+      document.querySelectorAll('#currentMissions .run').forEach((el, i) => {
+        el.classList.toggle('is-focus', i === focusIdx);
+        const key = el.dataset.checkKey;
+        if(key){
+          const checked = localStorage.getItem(key) === '1' || (localStorage.getItem(key) === null && el.querySelector('input')?.checked);
+          // rely on syncChecks for checked state; ensure class
+          const input = el.querySelector('input');
+          if(input) el.classList.toggle('is-checked', input.checked);
+        }
+      });
     }
 
     function celebrateStage(stageIdx){
@@ -949,8 +1402,7 @@
       updateProgress();
     }
 
-    /* --- ランナー ゲイトエンジン（SVG骨格を毎フレーム関節角度で駆動） --- */
-    /* 演出優先：OSのreduced-motion設定は無視する。?motion=off で全アニメーション停止 */
+    /* --- ランナー ゲイトエンジン --- */
     const reduceMotion = /[?&]motion=off/.test(location.search);
     if(reduceMotion) document.body.classList.add('motion-off');
     let prevStageIdx = null;
@@ -1070,7 +1522,7 @@
       }
     }
 
-    /* --- 風景の遊び要素：時間帯の空 ＋ ランダムイベント --- */
+    /* --- 風景の遊び要素 --- */
     function applyTimeOfDay(){
       const h = new Date().getHours();
       sceneTimeClass = (h >= 5 && h < 10) ? 't-morning' : (h < 16) ? '' : (h < 19) ? 't-dusk' : 't-night';
@@ -1092,16 +1544,16 @@
     }
     function spawnBalloon(){
       const scale = .8 + Math.random() * .45;
-      spawnFly(`<div class="balloonBob" style="transform-origin:top left; scale:${scale.toFixed(2)}"><span class="balloonEnv"></span><span class="balloonBasket"></span></div>`, 8 + Math.random() * 26, 26 + Math.random() * 10);
+      spawnFly(`<div class="balloonBob" style="transform-origin:top left; scale:${scale.toFixed(2)}"><span class="balloonEnv"></span><span class="balloonBasket"></span></div>`, 8 + Math.random() * 22, 26 + Math.random() * 10);
     }
     function spawnBirds(){
-      spawnFly('<i class="bird"></i><i class="bird" style="left:15px;top:8px"></i><i class="bird" style="left:29px;top:3px"></i>', 12 + Math.random() * 34, 9 + Math.random() * 5);
+      spawnFly('<i class="bird"></i><i class="bird" style="left:15px;top:8px"></i><i class="bird" style="left:29px;top:3px"></i>', 10 + Math.random() * 28, 9 + Math.random() * 5);
     }
     function spawnShootStar(){
       const s = document.createElement('span');
       s.className = 'shootStar';
       s.style.left = (45 + Math.random() * 40) + '%';
-      s.style.top = (8 + Math.random() * 22) + 'px';
+      s.style.top = (8 + Math.random() * 18) + 'px';
       skyFx.appendChild(s);
       setTimeout(() => s.remove(), 2000);
     }
@@ -1109,7 +1561,7 @@
       const r = document.createElement('span');
       r.className = 'rainbow';
       r.style.left = (5 + Math.random() * 45) + '%';
-      r.style.bottom = '28px';
+      r.style.bottom = '24px';
       skyFx.appendChild(r);
       setTimeout(() => r.remove(), 10000);
     }
@@ -1134,7 +1586,11 @@
     renderCurrentWeek(currentIndex);
     renderWeekList(currentIndex);
     updateProgress();
-    document.getElementById('jumpWeeks').addEventListener('click',()=>document.getElementById('weeks').scrollIntoView({behavior:'smooth'}));
+    document.getElementById('jumpWeeks').addEventListener('click',()=>{
+      const el = document.getElementById('weeks');
+      el.open = true;
+      el.scrollIntoView({behavior:'smooth', block:'start'});
+    });
     document.getElementById('openAll').addEventListener('click',openAll);
     document.getElementById('resetChecks').addEventListener('click',resetChecks);
     window.addEventListener('resize', refreshJourneyMarquee);
